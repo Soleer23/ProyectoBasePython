@@ -1,0 +1,128 @@
+{% include 'admin/cabecera2.html' %}
+
+
+<div class="row">
+    <!-- Formulario -->
+    <div class="col-md-6">
+        <h4>Datos del Usuario</h4>
+        <form action="/admin/UserAdmin/guardar" method="POST">
+            <div class="form-group">
+
+<!-- 
+                <label for="nom_user"></label>
+                <input type="text" name="nom_user" id="nom_user"> 
+                
+                -->
+
+
+                <label for="nom_user">Nombre</label>                
+                <input type="text" name="nom_user" id="nom_user" class="form-control" placeholder="Ingrese el nombre del usuario" required></div>
+            <div class="form-group">
+                <label for="ape_user">Apellido:</label>
+                <input type="text" name="ape_user" id="ape_user" class="form-control" placeholder="Ingrese el apellido del usuario" required>
+            </div>
+            <div class="form-group">
+                <label for="email_user">Email:</label>
+                <input type="email" name="email_user" id="email_user" class="form-control" placeholder="Escriba el email del usuario" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+    </div>
+
+    <!-- Tabla de usuarios -->
+    <div class="col-md-6">
+        <h4>Lista de Usuarios</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>nombre</th>
+                    <th>apellido</th>
+                    <th>email</th>
+                    <th>accion</th>
+                
+
+                </tr>
+            </thead>
+
+            <tbody>
+                {% if listaUsuarios2 :%}
+
+                    {% for usuario in listaUsuarios2 %}
+                        <tr>
+                            <td> {{ usuario[0] }} </td>
+                            <td> {{ usuario[1] }} </td>
+                            <td> {{ usuario[2] }} </td>
+                            <td> {{ usuario[3] }} </td>
+                        
+                        
+
+                            <td>
+                            <form action="/admin/UserAdmin/borrar" method="post">
+                                <input type="hidden" class="form-control" name="id_usuario" id="id_usuario" value="{{ usuario[0] }} " >
+                            
+                                <input class="btn btn-danger" type="submit" value="Eliminar">
+                                
+                            </form>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4">No hay usuarios registrados</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+    <!-- fin tabla -->
+
+    <!-- fin ROW -->
+</div>
+
+
+{% with messages = get_flashed_messages() %}
+
+{% if messages %}
+
+{% for mensaje in messages %}
+
+{% if mensaje == "usuario Eliminado" %}
+<script>
+
+    Swal.fire({
+        title: "Muy Bien....!",
+        text: "{{mensaje}} ",
+        icon: "error"
+    });
+
+</script>
+{% elif mensaje == "Libro Ingresado Correctamente" %}
+
+<script>
+
+    Swal.fire({
+        title: "Muy Bien!",
+        text: "{{mensaje}} ",
+        icon: "success"
+    });
+
+</script>
+
+{% endif %}
+
+{% endfor %}
+
+
+{% endif %}
+{% endwith %}
+
+
+
+
+
+{% include 'admin/footer2.html' %}

@@ -1,0 +1,127 @@
+{% include 'admin/cabecera2.html' %}
+
+<div class="row">
+    <!-- Formulario -->
+    <div class="col-md-6">
+        <h4>Datos de las Marcas</h4>
+        <form action="/admin/MarcasAdmin/guardar" method="POST">
+            <div class="form-group">
+
+<!-- 
+                <label for="nom_user"></label>
+                <input type="text" name="nom_user" id="nom_user"> 
+                
+                -->
+
+
+                <label for="nom_user">Nombre de la marca</label>                
+                <input type="text" name="nom_marca" id="nom_marca" class="form-control" placeholder="Ingrese el nombre de la marca" required></div>
+            <div class="form-group">
+                <label for="ape_user">Pais del origen</label>
+                <input type="text" name="pais_origen" id="pais_origen" class="form-control" placeholder="Ingrese el Pais de origen de la marca" required>
+            </div>
+            <div class="form-group">
+                <label for="email_user">Año de fundacion</label>
+                <input type="text" name="año_funda" id="año_funda" class="form-control" placeholder="Escriba el año de fundacion de la marca" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+    </div>
+
+    <!-- Tabla de usuarios -->
+    <div class="col-md-6">
+        <h4>Lista de Marcas</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>nombre</th>
+                    <th>Pais de Origen</th>
+                    <th>Año de fundacion</th>
+                    <th>accion</th>
+                
+
+                </tr>
+            </thead>
+
+            <tbody>
+                {% if listamarcas :%}
+
+                    {% for marcas in listamarcas %}
+                        <tr>
+                            <td> {{ marcas[0] }} </td>
+                            <td> {{ marcas[1] }} </td>
+                            <td> {{ marcas[2] }} </td>
+                            <td> {{ marcas[3] }} </td>
+                        
+                        
+
+                            <td>
+                            <form action="/admin/MarcasAdmin/borrar" method="POST">
+                                <input type="hidden" class="form-control" name="id_marca" id="id_marca" value="{{ marcas[0] }} " >
+                            
+                                <input class="btn btn-danger" type="submit" value="Eliminar">
+                                
+                            </form>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4">No hay marcas registrados</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+    <!-- fin tabla -->
+
+    <!-- fin ROW -->
+</div>
+
+
+{% with messages = get_flashed_messages() %}
+
+{% if messages %}
+
+{% for mensaje in messages %}
+
+{% if mensaje == "usuario Eliminado" %}
+<script>
+
+    Swal.fire({
+        title: "Muy Bien....!",
+        text: "{{mensaje}} ",
+        icon: "error"
+    });
+
+</script>
+{% elif mensaje == "Libro Ingresado Correctamente" %}
+
+<script>
+
+    Swal.fire({
+        title: "Muy Bien!",
+        text: "{{mensaje}} ",
+        icon: "success"
+    });
+
+</script>
+
+{% endif %}
+
+{% endfor %}
+
+
+{% endif %}
+{% endwith %}
+
+
+
+
+
+{% include 'admin/footer2.html' %}

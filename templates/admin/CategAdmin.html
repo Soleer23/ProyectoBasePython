@@ -1,0 +1,127 @@
+{% include 'admin/cabecera2.html' %}
+
+
+<div class="row">
+
+
+
+    <!-- Formulario de libros -->
+    <div class="col-md-5">
+        <div class="card">
+
+            <div class="card-header">Datos del Libro</div>
+            <div class="card-body">
+
+                <!--enctype="multipart/form-data" SE DEBE PONER YA QUE ESTAMOS ENVIANDO UNA IMAGEN  -->
+                <form action="/admin/CategAdmin/guardar" method="post" enctype="multipart/form-data">
+
+                    <div class="mb-3">
+                        <label for="nom_user" class="form-label">Categoria:</label>
+                        <input type="text" class="form-control" name="nom_categ" id="nom_categ"
+                            aria-describedby="helpId" placeholder="Ingrese el nombre de la categoria" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="ape_user" class="form-label">Descripción</label>
+                        <input type="text" class="form-control" name="des_categ" id="des_categ"
+                            aria-describedby="helpId" placeholder="Ingrese la descripcion" />
+                    </div>
+
+
+
+
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+
+                </form>
+
+
+            </div>
+            <div class="card-footer text-muted">Footer</div>
+
+        </div>
+    </div>
+    <!-- Fin formulario de libros -->
+
+
+    <!-- tabla de recepcion libros -->
+    <div class="col-md-7">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Descripcion</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Ojo, primero va la variable y despues va la lista de datos -->
+                    {% for categoria in listacategorias %}
+                    <tr class="">
+                        <td>{{ categoria[0] }}</td>
+                        <td>{{ categoria[1] }}</td>
+                        <td>{{ categoria[2] }}</td>
+
+
+                            <td>
+                            <form action="/admin/CategAdmin/borrar" method="post">
+                                <input type="hidden" class="form-control" name="id_categoria" id="id_categoria" value="{{ categoria[0] }} " >
+                            
+                                <input class="btn btn-danger" type="submit" value="Eliminar">
+                                
+                            </form>
+                            </td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <!-- fin tabla -->
+
+    <!-- fin ROW -->
+</div>
+
+
+{% with messages = get_flashed_messages() %}
+
+{% if messages %}
+
+{% for mensaje in messages %}
+
+{% if mensaje == "Libro Eliminado" %}
+<script>
+
+    Swal.fire({
+        title: "Muy Bien....!",
+        text: "{{mensaje}} ",
+        icon: "error"
+    });
+
+</script>
+{% elif mensaje == "Libro Ingresado Correctamente" %}
+
+<script>
+
+    Swal.fire({
+        title: "Muy Bien!",
+        text: "{{mensaje}} ",
+        icon: "success"
+    });
+
+</script>
+
+{% endif %}
+
+{% endfor %}
+
+
+{% endif %}
+{% endwith %}
+
+
+
+{% include 'admin/footer2.html' %}
