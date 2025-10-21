@@ -11,6 +11,9 @@ from flask import abort #obtenemos la informacion de la imagen, es necesaria par
 import os
 
 
+
+
+
 app = Flask(__name__) #se crea la aplicacion
 app.secret_key="Alejo"  
 

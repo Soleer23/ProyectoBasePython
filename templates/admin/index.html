@@ -1,4 +1,70 @@
 {% include 'admin/cabecera2.html' %}
 
 
+<div class="container-fluid py-4">
+
+    <!-- 🔷 Banner superior -->
+    <div class="banner-container mb-5">
+        <div class="banner-overlay"></div>
+        <img src="" alt="Panel de Administración" class="banner-img">
+        <div class="banner-text">
+            <h1 class="fw-bold text-white">Panel de Administración</h1>
+            <p class="text-light">Gestiona tus módulos de manera eficiente</p>
+        </div>
+    </div>
+    
+
+    <!-- 🟩 Sección de Bloques -->
+    <div class="row g-4">
+        <!-- Usuarios -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card shadow-lg border-0 rounded-4 hover-scale text-center p-3">
+                <div class="card-body">
+                    <i class="fas fa-user fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">Usuarios</h5>
+                    <p class="card-text text-muted">Gestiona cuentas de usuarios</p>
+                    <a href="../UserAdmin" class="btn btn-primary btn-sm mt-2">Entrar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categorías -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card shadow-lg border-0 rounded-4 hover-scale text-center p-3">
+                <div class="card-body">
+                    <i class="fas fa-tags fa-3x text-success mb-3"></i>
+                    <h5 class="card-title">Categorías</h5>
+                    <p class="card-text text-muted">Administra las categorías</p>
+                    <a href="../CategAdmin" class="btn btn-success btn-sm mt-2">Entrar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Marcas -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card shadow-lg border-0 rounded-4 hover-scale text-center p-3">
+                <div class="card-body">
+                    <i class="fas fa-industry fa-3x text-warning mb-3"></i>
+                    <h5 class="card-title">Marcas</h5>
+                    <p class="card-text text-muted">Control de marcas registradas</p>
+                    <a href="../MarcasAdmin" class="btn btn-warning btn-sm mt-2">Entrar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Motos -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card shadow-lg border-0 rounded-4 hover-scale text-center p-3">
+                <div class="card-body">
+                    <i class="fas fa-motorcycle fa-3x text-danger mb-3"></i>
+                    <h5 class="card-title">Motos</h5>
+                    <p class="card-text text-muted">Gestiona la base de datos</p>
+                    <a href="" class="btn btn-danger btn-sm mt-2">Entrar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 {% include 'admin/footer2.html' %}

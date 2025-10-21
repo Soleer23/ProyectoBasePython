@@ -11331,4 +11331,35 @@ section#contact form#contactForm :-ms-input-placeholder {
     z-index: 100;
 }
 
+.icon {
+  width: 20px;
+  height: 20px;
+  stroke: #8c9ab0;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.icon:hover {
+  stroke: #4b8efc;
+  transform: scale(1.1);
+}
+
+.hover-scale {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-scale:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card i {
+  transition: transform 0.3s ease;
+}
+
+.card:hover i {
+  transform: rotate(10deg);
+}
+
+
 

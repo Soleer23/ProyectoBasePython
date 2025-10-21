@@ -31,6 +31,9 @@
     <link rel="preload" href="{{url_for('static', filename = 'css/adminlte.css') }}" as="style" />
     <!--end::Accessibility Features-->
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
     <!--begin::Fonts-->
     <link
         rel="stylesheet"
@@ -102,10 +105,10 @@
             </a>
           </li>
           <li class="nav-item d-none d-md-block">
-            <a href="../admin/" class="nav-link">Home</a>
+            <a href="../admin" class="nav-link">Home</a>
           </li>
           <li class="nav-item d-none d-md-block">
-            <a href="#" class="nav-link">Contact</a>
+            <a href="../admin/loginAdmin" class="nav-link">Cerrar Sesion </a>
           </li>
         </ul>
         <!--end::Start Navbar Links-->
@@ -361,29 +364,35 @@
               <a href="#" class="nav-link active">
                 <i class="nav-icon bi bi-speedometer"></i>
                 <p>
-                  Dashboard
+                  Base de datos.
                   <i class="nav-arrow bi bi-chevron-right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="/UserAdmin" class="nav-link active">
-                    <i class="nav-icon bi bi-circle"></i>
+                    <i class="nav-icon bi bi-people-fill"></i>
                     <p>Usuarios</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="/CategAdmin" class="nav-link">
-                    <i class="nav-icon bi bi-circle"></i>
+                    <i class="nav-icon bi bi-list"></i>
                     <p>Categorias</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="/MarcasAdmin" class="nav-link">
-                    <i class="nav-icon bi bi-circle"></i>
+                    <i class="nav-icon bi bi-star-fill"></i>
                     <p>Marcas</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">
+                    <i class="nav-icon bi bi-hand-thumbs-up-fill"></i>
+                    <p>Modelos</p>
+                  </a>
+                
               </ul>
             </li>
             <li class="nav-item">
@@ -810,14 +819,15 @@
           <!--begin::Row-->
           <div class="row">
             <div class="col-sm-6">
-              <h3 class="mb-0">Dashboard</h3>
+              <h3 class="mb-0">Administrados L.A.S.S </h3>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-end">
-                <li class="breadcrumb-item"><a href="../admin/">Home</a></li>
+                <li class="breadcrumb-item"><a href="../admin">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  Dashboard
+                <li class=""><a href="../admin/loginAdmin">Cerrar Sesion</a></li>
                 </li>
+                
                 <main id="main" class="">
               </ol>
             </div>
