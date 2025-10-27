@@ -294,6 +294,78 @@ def admin_marcas_borrar():
     return redirect('/MarcasAdmin')
 
 
+@app.route('/ModelosAdmin')
+def admin_modelos():
+    if not 'login' in session:
+        return redirect('/admin/loginAdmin')
+    
+    conexion = mysql.connector.connect(**config)
+    cursor = conexion.cursor
+
+    cursor.execute("SELECT * FROM 'modelos'")
+    modelos = cursor.fetchall()
+    conexion.commit
+    print(modelos)
+
+    cursor.execute("SELECT * FROM 'marcas'")
+    marcas = cursor.fetchall()
+    conexion.commit()
+
+    cursor.execute("SELECT * FROM 'categorias'")
+    categorias = cursor.fetchall()
+    conexion.commit()
+
+    return render_template('admin/ModelosAdmin.html', modelos = modelos, marcas = marcas, categorias = categorias)
+
+
+@app.route('/admin/ModelosAdmin/guardar', methods = ['POST'])
+def admin_modelos_guardar():
+
+    if not 'login' in session:
+        return redirect('/admin/loginAdmin')
+
+    id_modelo = request.form['id_modelo']
+    id_categoria = request.form['id_categoria']
+    id_marca = request.form['id_marca']
+    num_modelo = request.form['num_modelo']
+    nom_marca = request.form['nom_marca']
+    nom_categ = request.form['nom_categ']
+
+
+    sql = "INSERT INTO 'modelos' ('id_modelo', 'id_categoria', 'id_marca', 'num_modelo', 'nom_marca', 'nom_categ') VALUES (%s, %s, %s, %s, %s, %s)"
+    datos = (id_modelo, id_categoria, id_marca, num_modelo, nom_marca, nom_categ)
+    conexion = mysql.connector.connect(**config)
+    cursor = conexion.cursor()
+    cursor.execute(sql,datos)
+    conexion.commit()
+    
+    print(id_modelo)
+    print(id_categoria)
+    print(id_marca)
+    print(num_modelo)
+    print(nom_marca)
+    print(nom_categ)
+
+    return redirect('/admin/ModelosAdmin')
+
+@app.route('/admin/ModelosAdmin/borrar', methods = ['POST'])
+def admin_modelos_borrar():
+
+    if not 'login' in session:
+        return redirect('/admin/loginAdmin')
+    
+
+    id_modelo = request.form['id_modelo']
+
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+    sql = "DELETE FROM modelos WHERE id_modelo = %s"
+    cursor.execute(sql, [id_modelo])
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect('/admin/ModelosAdmin')
 
 
 

@@ -1,0 +1,131 @@
+{% include 'admin/cabecera2.html' %}
+
+<div class="container mt-4">
+  <div class="row">
+    <!-- FORMULARIO -->
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">Datos del Modelo</h5>
+        </div>
+        <div class="card-body">
+          <form action="/admin/ModelosAdmin/guardar" method="POST">
+            <div class="mb-3">
+              <label for="id_modelo" class="form-label">ID Modelo:</label>
+              <input
+                type="text"
+                class="form-control"
+                name="id_modelo"
+                placeholder="Ingrese el ID del modelo"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="id_categoria" class="form-label">ID Categoría:</label>
+              <input
+                type="text"
+                class="form-control"
+                name="id_categoria"
+                placeholder="Ingrese el ID de la categoría"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="id_marca" class="form-label">ID Marca:</label>
+              <input
+                type="text"
+                class="form-control"
+                name="id_marca"
+                placeholder="Ingrese el ID de la marca"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="num_modelo" class="form-label">Número Modelo:</label>
+              <input
+                type="text"
+                class="form-control"
+                name="num_modelo"
+                placeholder="Ingrese el número del modelo"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="nom_marca" class="form-label">Nombre Marca:</label>
+              <input
+                type="text"
+                class="form-control"
+                name="nom_marca"
+                placeholder="Ingrese el nombre de la marca"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="nom_categ" class="form-label">Nombre Categoría:</label>
+              <input
+                type="text"
+                class="form-control"
+                name="nom_categ"
+                placeholder="Ingrese el nombre de la categoría"
+                required
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Agregar</button>
+          </form>
+        </div>
+        <div class="card-footer text-center text-muted">
+          Footer
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLA -->
+    <div class="col-md-8">
+      <table class="table table-bordered table-hover shadow-sm">
+        <thead class="table-light">
+          <tr>
+            <th>ID Modelo</th>
+            <th>ID Categoría</th>
+            <th>ID Marca</th>
+            <th>Número Modelo</th>
+            <th>Nombre Marca</th>
+            <th>Nombre Categoría</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for modelo in modelos %}
+          <tr>
+            <td>{{ modelo.id_modelo }}</td>
+            <td>{{ modelo.id_categoria }}</td>
+            <td>{{ modelo.id_marca }}</td>
+            <td>{{ modelo.num_modelo }}</td>
+            <td>{{ modelo.nom_marca }}</td>
+            <td>{{ modelo.nom_categ }}</td>
+            <td>
+              <form
+                action="/admin/ModelosAdmin/borrar"
+                method="POST"
+                style="display:inline-block;"
+              >
+                <input type="hidden" name="id_modelo" value="{{ modelo.id_modelo }}">
+                <button type="submit" class="btn btn-danger btn-sm">
+                  Eliminar
+                </button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% include 'admin/pieAdmin.html' %}
