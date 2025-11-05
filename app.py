@@ -302,16 +302,16 @@ def admin_modelos():
     conexion = mysql.connector.connect(**config)
     cursor = conexion.cursor
 
-    cursor.execute("SELECT * FROM 'modelos'")
+    cursor.execute("SELECT * FROM modelos")
     modelos = cursor.fetchall()
-    conexion.commit
+    conexion.commit()
     print(modelos)
 
-    cursor.execute("SELECT * FROM 'marcas'")
+    cursor.execute("SELECT * FROM marcas")
     marcas = cursor.fetchall()
     conexion.commit()
 
-    cursor.execute("SELECT * FROM 'categorias'")
+    cursor.execute("SELECT * FROM categorias")
     categorias = cursor.fetchall()
     conexion.commit()
 
