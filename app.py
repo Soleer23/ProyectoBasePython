@@ -4,7 +4,7 @@ from flask import render_template, session
 from flask import url_for
 from flask import request                 #recepciona la informacion "DEL FORMULARIO"
 from flask import redirect                #redirecciona "MUESTRA LA INFORMACION PARA LAS TABLAS"
-import mysql.connector                    #Se importa libreria para conexion a base de datos 
+import mysql.connector                   #Se importa libreria para conexion a base de datos 
 from datetime import datetime             #Se importa para colocar un tiempo exacto "Para la imagen"
 from flask import send_from_directory     #optenemos informacion de la imagen
 from flask import abort #obtenemos la informacion de la imagen, es necesaria para mostrar las imagenes
@@ -299,21 +299,24 @@ def admin_modelos():
     if not 'login' in session:
         return redirect('/admin/loginAdmin')
     
-    conexion = mysql.connector.connect(**config)
-    cursor = conexion.cursor
+    conn = mysql.connector.connect(**config) # Crear una conexión al servidor MySQL
+    cursor = conn.cursor() # Crear un cursor para ejecutar comandos SQL
 
     cursor.execute("SELECT * FROM modelos")
     modelos = cursor.fetchall()
-    conexion.commit()
+    
     print(modelos)
 
     cursor.execute("SELECT * FROM marcas")
     marcas = cursor.fetchall()
-    conexion.commit()
+    
 
     cursor.execute("SELECT * FROM categorias")
     categorias = cursor.fetchall()
-    conexion.commit()
+    
+    # Cerrar el cursor y la conexión
+    cursor.close()
+    conn.close()
 
     return render_template('admin/ModelosAdmin.html', modelos = modelos, marcas = marcas, categorias = categorias)
 
@@ -324,27 +327,29 @@ def admin_modelos_guardar():
     if not 'login' in session:
         return redirect('/admin/loginAdmin')
 
-    id_modelo = request.form['id_modelo']
-    id_categoria = request.form['id_categoria']
-    id_marca = request.form['id_marca']
     num_modelo = request.form['num_modelo']
-    nom_marca = request.form['nom_marca']
-    nom_categ = request.form['nom_categ']
+    marca = request.form['marca']
+    categoria = request.form['categoria']
+    anio_lanzamiento = request.form['anio_lanzamiento']
+    id_marca = request.form['id_marca']
+    id_categoria = request.form['id_categoria']
 
 
-    sql = "INSERT INTO 'modelos' ('id_modelo', 'id_categoria', 'id_marca', 'num_modelo', 'nom_marca', 'nom_categ') VALUES (%s, %s, %s, %s, %s, %s)"
-    datos = (id_modelo, id_categoria, id_marca, num_modelo, nom_marca, nom_categ)
+
+    sql = "INSERT INTO modelos ('num_modelo', 'marca', 'categoria', 'anio_lanzamiento','id_marca', 'id_categoria') VALUES (%s, %s, %s, %s, %s, %s)"
+    datos = (num_modelo, marca, categoria, anio_lanzamiento, id_marca, id_categoria)
     conexion = mysql.connector.connect(**config)
     cursor = conexion.cursor()
-    cursor.execute(sql,datos)
+    cursor.execute(sql, datos)
     conexion.commit()
     
-    print(id_modelo)
-    print(id_categoria)
-    print(id_marca)
+
     print(num_modelo)
-    print(nom_marca)
-    print(nom_categ)
+    print(marca)
+    print(categoria)
+    print(anio_lanzamiento)
+    print(id_marca)
+    print(id_categoria)
 
     return redirect('/admin/ModelosAdmin')
 
@@ -391,7 +396,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "clave_secreta"
 
 db = SQLAlchemy(app)
-
 
 
 

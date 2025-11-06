@@ -1,3 +1,4 @@
+
 {% include 'admin/cabecera2.html' %}
 
 <div class="container mt-4">
@@ -10,71 +11,55 @@
         </div>
         <div class="card-body">
           <form action="/admin/ModelosAdmin/guardar" method="POST">
+
+
             <div class="mb-3">
-              <label for="id_modelo" class="form-label">ID Modelo:</label>
-              <input
-                type="text"
-                class="form-control"
-                name="id_modelo"
-                placeholder="Ingrese el ID del modelo"
-                required
-              />
+              <label for="num_modelo" class="form-label">Número Modelo:</label>
+              <input type="text" class="form-control" id="num_modelo"   name="num_modelo" placeholder="Ingrese el número del modelo"
+                required />
             </div>
 
             <div class="mb-3">
-              <label for="id_categoria" class="form-label">ID Categoría:</label>
-              <input
-                type="text"
-                class="form-control"
-                name="id_categoria"
-                placeholder="Ingrese el ID de la categoría"
-                required
-              />
+              <label for="marca" class="form-label">Nombre Marca:</label>
+              <input type="text" class="form-control" id="marca" name="marca" placeholder="Ingrese el nombre de la marca"
+                required />
+            </div>
+
+            <div class="mb-3"> 
+              <label for="categoria" class="form-label">Nombre Categoría:</label>
+              <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Ingrese el nombre de la categoría"
+                required />
+            </div>
+
+            <div class="mb-3">
+              <label for="anio_lanzamiento" class="form-label">Año de lanzamiento:</label>
+              <input type="number" class="form-control" id="anio_lanzamiento" name="anio_lanzamiento" placeholder="Ingrese el nombre de la categoría"
+                required />
             </div>
 
             <div class="mb-3">
               <label for="id_marca" class="form-label">ID Marca:</label>
-              <input
-                type="text"
-                class="form-control"
-                name="id_marca"
-                placeholder="Ingrese el ID de la marca"
-                required
-              />
+              <select name="id_marca" id="id_marca" class="form-control" required>              
+                {% for marca in marcas %}
+                <option value="" hidden>Seleccione</option>
+                <option value="{{ marca[0] }}">{{marca[o]}} - {{marca[1]}} </option>
+                {% endfor %}              
+              </select>
             </div>
 
-            <div class="mb-3">
-              <label for="num_modelo" class="form-label">Número Modelo:</label>
-              <input
-                type="text"
-                class="form-control"
-                name="num_modelo"
-                placeholder="Ingrese el número del modelo"
-                required
-              />
-            </div>
+
 
             <div class="mb-3">
-              <label for="nom_marca" class="form-label">Nombre Marca:</label>
-              <input
-                type="text"
-                class="form-control"
-                name="nom_marca"
-                placeholder="Ingrese el nombre de la marca"
-                required
-              />
+              <label for="id_categoria" class="form-label">ID Categoría:</label>
+              <select name="id_categoria" id="id_categoria" class="form-control" required>
+                {% for categoria in categorias %}
+                <option value="" hidden>Seleccione</option>
+                <option value="{{ categoria[0] }}">{{categoria[0]}} - {{categoria[1]}} </option>
+                {% endfor %}
+              </select>
             </div>
 
-            <div class="mb-3">
-              <label for="nom_categ" class="form-label">Nombre Categoría:</label>
-              <input
-                type="text"
-                class="form-control"
-                name="nom_categ"
-                placeholder="Ingrese el nombre de la categoría"
-                required
-              />
-            </div>
+
 
             <button type="submit" class="btn btn-primary">Agregar</button>
           </form>
@@ -91,30 +76,28 @@
         <thead class="table-light">
           <tr>
             <th>ID Modelo</th>
-            <th>ID Categoría</th>
-            <th>ID Marca</th>
             <th>Número Modelo</th>
             <th>Nombre Marca</th>
             <th>Nombre Categoría</th>
+            <th>Año de lanzamiento</th>
+            <th>ID Marca</th>
+            <th>ID Categoría</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           {% for modelo in modelos %}
           <tr>
-            <td>{{ modelo.id_modelo }}</td>
-            <td>{{ modelo.id_categoria }}</td>
-            <td>{{ modelo.id_marca }}</td>
-            <td>{{ modelo.num_modelo }}</td>
-            <td>{{ modelo.nom_marca }}</td>
-            <td>{{ modelo.nom_categ }}</td>
+            <td>{{ modelo[0]  }}</td>
+            <td>{{ modelo[1]  }}</td>
+            <td>{{ modelo[2]  }}</td>
+            <td>{{ modelo[3]  }}</td>
+            <td>{{ modelo[4]  }}</td>
+            <td>{{ modelo[5]  }}</td>
+            <td>{{ modelo[6]  }}</td>
             <td>
-              <form
-                action="/admin/ModelosAdmin/borrar"
-                method="POST"
-                style="display:inline-block;"
-              >
-                <input type="hidden" name="id_modelo" value="{{ modelo.id_modelo }}">
+              <form action="/admin/ModelosAdmin/borrar" method="POST" style="display:inline-block;">
+                <input type="hidden" name="id_modelo" value="{{ modelo[0]  }}">
                 <button type="submit" class="btn btn-danger btn-sm">
                   Eliminar
                 </button>
