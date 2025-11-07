@@ -1,6 +1,33 @@
 {% include 'admin/cabecera2.html' %}
 
 
+<!-- Recuadro elegante de Accesos directos -->
+<div class="row justify-content-center mb-4">
+  <div class="col-md-6">
+    <div class="card shadow-sm border-0 bg-light">
+      <div class="card-body text-center p-3">
+        <h5 class="mb-0 text-dark">
+          <i class="bi bi-gear-wide-connected me-2 text-primary"></i> Tipos de Motor
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Estilo opcional para un efecto más elegante -->
+<style>
+  .card.bg-light {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+  .card.bg-light:hover {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+  }
+</style>
+
+
+
 <div class="row">
 
 
@@ -40,12 +67,13 @@
 
     <!-- tabla de recepcion libros -->
     <div class="col-md-7">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
+        <div>
+            <table class="table table-bordered table-hover shadow-sm">
+                <thead class="table-light">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Tipo</th>
+                        <th scope="col">Accion</th>
                         
                     </tr>
                 </thead>
@@ -58,12 +86,10 @@
 
 
                             <td>
-                            <form action="/admin/TipoMotorAdmin/borrar" method="post">
-                                <input type="hidden" class="form-control" name="id_tipo " id="id_tipo " value="{{ Tipos[0] }} " >
-                            
+                                <form action="/admin/TipoMotorAdmin/borrar" method="post">
+                                <input type="hidden" name="id_tipo" value="{{ Tipos[0] }}">
                                 <input class="btn btn-danger" type="submit" value="Eliminar">
-                                
-                            </form>
+                                </form>
                             </td>
 
                     </tr>

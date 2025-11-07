@@ -1,5 +1,30 @@
 {% include 'admin/cabecera2.html' %}
 
+<!-- Recuadro elegante de Accesos directos -->
+<div class="row justify-content-center mb-4">
+  <div class="col-md-6">
+    <div class="card shadow-sm border-0 bg-light">
+      <div class="card-body text-center p-3">
+        <h5 class="mb-0 text-secondary">
+          <i class="fas fa-link me-2 text-primary"></i> Accesos directos
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Estilo opcional para un efecto más elegante -->
+<style>
+  .card.bg-light {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+  .card.bg-light:hover {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+  }
+</style>
+
 
 
 
@@ -48,7 +73,7 @@
                     <i class="fas fa-motorcycle fa-3x text-danger mb-3"></i>
                     <h5 class="card-title">Motos</h5>
                     <p class="card-text text-muted">Gestiona la base de datos</p>
-                    <a href="" class="btn btn-danger btn-sm mt-2">Entrar</a>
+                    <a href="/MotosAdmin" class="btn btn-danger btn-sm mt-2">Entrar</a>
                 </div>
             </div>
         </div>

@@ -1,15 +1,40 @@
 {% include 'admin/cabecera2.html' %}
+<!-- Recuadro elegante de Accesos directos -->
+<div class="row justify-content-center mb-4">
+  <div class="col-md-6">
+    <div class="card shadow-sm border-0 bg-light">
+      <div class="card-body text-center p-3">
+        <h5 class="mb-0 text-dark">
+          <i class="bi bi-layers me-2 text-primary"></i> Categorias
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Estilo opcional para un efecto más elegante -->
+<style>
+  .card.bg-light {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+  .card.bg-light:hover {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+  }
+</style>
 
 
 <div class="row">
+<div class="container mt-4">
+    <div class="row">
+    <!-- FORMULARIO -->
+    <div class="col-md-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-light">
+        <h5 class="mb-0">Datos del Categoria</h5>
+        </div>
 
-
-
-    <!-- Formulario de libros -->
-    <div class="col-md-5">
-        <div class="card">
-
-            <div class="card-header">Datos del Libro</div>
             <div class="card-body">
 
                 <!--enctype="multipart/form-data" SE DEBE PONER YA QUE ESTAMOS ENVIANDO UNA IMAGEN  -->
@@ -45,14 +70,14 @@
 
     <!-- tabla de recepcion libros -->
     <div class="col-md-7">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
+        <div class="">
+            <table class="table table-bordered table-hover shadow-sm">
+                <thead class="table-light">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Categoria</th>
                         <th scope="col">Descripcion</th>
-                        
+                        <th scope="col">Accion</th>
                     </tr>
                 </thead>
                 <tbody>

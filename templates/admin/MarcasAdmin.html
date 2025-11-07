@@ -1,88 +1,103 @@
 {% include 'admin/cabecera2.html' %}
 
-<div class="row">
-    <!-- Formulario -->
-    <div class="col-md-6">
-        <h4>Datos de las Marcas</h4>
-        <form action="/admin/MarcasAdmin/guardar" method="POST">
-            <div class="form-group">
-
-<!-- 
-                <label for="nom_user"></label>
-                <input type="text" name="nom_user" id="nom_user"> 
-                
-                -->
-
-
-                <label for="nom_user">Nombre de la marca</label>                
-                <input type="text" name="nom_marca" id="nom_marca" class="form-control" placeholder="Ingrese el nombre de la marca" required></div>
-            <div class="form-group">
-                <label for="ape_user">Pais del origen</label>
-                <input type="text" name="pais_origen" id="pais_origen" class="form-control" placeholder="Ingrese el Pais de origen de la marca" required>
-            </div>
-            <div class="form-group">
-                <label for="email_user">Año de fundacion</label>
-                <input type="text" name="año_funda" id="año_funda" class="form-control" placeholder="Escriba el año de fundacion de la marca" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Agregar</button>
-        </form>
+<!-- Recuadro elegante de Accesos directos -->
+<div class="row justify-content-center mb-4">
+  <div class="col-md-6">
+    <div class="card shadow-sm border-0 bg-light">
+      <div class="card-body text-center p-3">
+        <h5 class="mb-0 text-dark">
+          <i class="bi bi-bookmarks me-2 text-primary"></i> Marcas
+        </h5>
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- Tabla de usuarios -->
-    <div class="col-md-6">
-        <h4>Lista de Marcas</h4>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>nombre</th>
-                    <th>Pais de Origen</th>
-                    <th>Año de fundacion</th>
-                    <th>accion</th>
-                
+<!-- Estilo opcional para un efecto más elegante -->
+<style>
+  .card.bg-light {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+  .card.bg-light:hover {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+  }
+</style>
 
-                </tr>
-            </thead>
 
-            <tbody>
-                {% if listamarcas :%}
 
-                    {% for marcas in listamarcas %}
-                        <tr>
-                            <td> {{ marcas[0] }} </td>
-                            <td> {{ marcas[1] }} </td>
-                            <td> {{ marcas[2] }} </td>
-                            <td> {{ marcas[3] }} </td>
-                        
-                        
 
-                            <td>
-                            <form action="/admin/MarcasAdmin/borrar" method="POST">
-                                <input type="hidden" class="form-control" name="id_marca" id="id_marca" value="{{ marcas[0] }} " >
-                            
-                                <input class="btn btn-danger" type="submit" value="Eliminar">
-                                
-                            </form>
-                            </td>
 
-                        </tr>
-                    {% endfor %}
-                {% else %}
+<div class="container mt-4">
+    <div class="row">
+        <!-- FORMULARIO -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Datos de la Marca</h5>
+                </div>
+                <div class="card-body">
+                    <form action="/admin/MarcasAdmin/guardar" method="POST">
+                        <div class="mb-3">
+                            <label for="nom_marca" class="form-label">Nombre de la Marca:</label>
+                            <input type="text" class="form-control" id="nom_marca" name="nom_marca"
+                                placeholder="Ingrese el nombre de la marca" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="pais_origen" class="form-label">Pais origen:</label>
+                            <input type="text" class="form-control" id="pais_origen" name="pais_origen"
+                                placeholder="Ingrese el pais de origen" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="año_funda" class="form-label">Año de fundacion</label>
+                            <input type="text" class="form-control" id="año_funda" name="año_funda"
+                                placeholder="Ingrese el año de fundacion" required />
+
+                        </div>
+
+                        <input type="submit" class="btn btn-primary" value="Guardar Marca" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- tabla de recepcion libros -->
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover shadow-sm">
+                <thead class="table-light">
                     <tr>
-                        <td colspan="4">No hay marcas registrados</td>
+                        <th scope="col">ID</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Accion</th>
                     </tr>
-                {% endif %}
-            </tbody>
-
-        </table>
+                </thead>
+                <tbody>
+                    <!-- Ojo, primero va la variable y despues va la lista de datos -->
+                    {% for marca in listamarcas %}
+                    <tr>
+                        <td>{{ marca[0] }}</td>
+                        <td>{{ marca[1] }}</td>
+                        <td>{{ marca[2] }}</td>
+                        <td>
+                            <form action="/admin/MarcasAdmin/borrar" method="post">
+                                <input type="hidden" name="id_marca" value="{{ marca[0] }}">
+                                <input class="btn btn-danger" type="submit" value="Eliminar">
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
+
+
+
 </div>
-
-    <!-- fin tabla -->
-
-    <!-- fin ROW -->
-</div>
-
 
 {% with messages = get_flashed_messages() %}
 

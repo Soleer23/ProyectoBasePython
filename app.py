@@ -557,19 +557,19 @@ def admin_tipos_motor_guardar():
     if not 'login' in session:
         return redirect('/admin/loginAdmin')
     
-    tipo = request.form.get('tipo')
-
+    
+    tipo = request.form['tipo']    
     conn = mysql.connector.connect(**config)
     cursor = conn.cursor()
-    sql = "INSERT INTO tipos_motor (tipo) VALUES (%s)"
-    cursor.execute(sql,(tipo))
+
+    sql = "INSERT INTO tipos_motor(tipo) VALUES(%s);"
+    cursor.execute(sql,(tipo,))
 
     conn.commit()
     cursor.close()                                                                                                                                      
     conn.close()
 
-    return redirect('/TipoMotorAdmin') 
-
+    return redirect('/TipoMotorAdmin')
 @app.route('/admin/TipoMotorAdmin/borrar', methods=['POST'])
 def admin_tipos_motor_borrar():
 
@@ -581,12 +581,94 @@ def admin_tipos_motor_borrar():
     conn = mysql.connector.connect(**config)
     cursor = conn.cursor()
     sql = "DELETE FROM tipos_motor WHERE id_tipo = %s"
-    cursor.execute(sql, [id_tipo])
+    cursor.execute(sql, (id_tipo,))
+
     conn.commit()
     cursor.close()
     conn.close()
 
     return redirect('/TipoMotorAdmin')
+
+@app.route('/ReseñasAdmin')
+def admin_resenas():
+    if not 'login' in session:
+        return redirect('/admin/loginAdmin')
+    
+    conn = mysql.connector.connect(**config) # Crear una conexión al servidor MySQL
+    cursor = conn.cursor() # Crear un cursor para ejecutar comandos SQL
+
+    cursor.execute("SELECT * FROM resenas")
+    resenas = cursor.fetchall()
+
+    print(resenas)
+
+    cursor.execute("SELECT * FROM usuarios")
+    usuarios = cursor.fetchall()
+
+    cursor.execute("SELECT * FROM modelos")
+    modelos = cursor.fetchall()
+
+    # Cerrar el cursor y la conexión
+    cursor.close()
+    conn.close()
+
+    return render_template('admin/ReseñasAdmin.html', resenas = resenas, usuarios = usuarios, modelos = modelos)
+
+
+
+
+
+@app.route('/admin/ReseñasAdmin/guardar', methods = ['POST'])
+def admin_resenas_guardar():
+
+    if not 'login' in session:
+        return redirect('/admin/loginAdmin')
+    
+    usuario = request.form['usuario']
+    modelo = request.form['modelo']
+    calificacion = request.form['calificacion']
+    comentario = request.form['comentario']
+    id_usuario = request.form['id_usuario']
+    id_modelo = request.form['id_modelo']
+    
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+    sql = "INSERT INTO resenas (usuario, modelo, calificacion, comentario, id_usuario, id_modelo) VALUES (%s, %s, %s, %s, %s, %s)"
+    datos = (usuario, modelo, calificacion, comentario, id_usuario, id_modelo)
+    
+    cursor.execute(sql, datos)
+    conn.commit()
+
+    print(usuario)
+    print(modelo)
+    print(calificacion)
+    print(comentario)
+    print(id_usuario)
+    print(id_modelo)
+
+    return redirect('/ReseñasAdmin')
+
+
+@app.route('/admin/ReseñasAdmin/borrar', methods = ['POST'])
+def admin_resenas_borrar():
+
+    if not 'login' in session:
+        return redirect('/admin/loginAdmin')
+    
+
+    id_resena = request.form['id_resena']
+
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+    sql = "DELETE FROM resenas WHERE id_resena = %s"
+    cursor.execute(sql, [id_resena])
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect('/ReseñasAdmin')
+
+
 
 
 
