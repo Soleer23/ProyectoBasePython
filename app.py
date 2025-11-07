@@ -535,7 +535,7 @@ def admin_ficha_tecnica_borrar():
 
     return redirect('/FichaTecAdmin')
 
-@app.route('/admin/TipoMotorAdmin')
+@app.route('/TipoMotorAdmin')
 def admin_tipos_motor():
     if not 'login' in session:
         return redirect('/admin/loginAdmin')
@@ -557,7 +557,7 @@ def admin_tipos_motor_guardar():
     if not 'login' in session:
         return redirect('/admin/loginAdmin')
     
-    tipo = request.form['tipo']
+    tipo = request.form.get('tipo')
 
     conn = mysql.connector.connect(**config)
     cursor = conn.cursor()
@@ -565,7 +565,7 @@ def admin_tipos_motor_guardar():
     cursor.execute(sql,(tipo))
 
     conn.commit()
-    cursor.close()
+    cursor.close()                                                                                                                                      
     conn.close()
 
     return redirect('/TipoMotorAdmin') 
@@ -576,7 +576,7 @@ def admin_tipos_motor_borrar():
     if not 'login' in session:
         return redirect('/admin/loginAdmin')
     
-    id_tipo = request.form['id_tipo']
+    id_tipo = request.form.get('id_tipo')
 
     conn = mysql.connector.connect(**config)
     cursor = conn.cursor()
