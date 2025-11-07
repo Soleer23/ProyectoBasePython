@@ -42,7 +42,7 @@
               <select name="id_marca" id="id_marca" class="form-control" required>              
                 {% for marca in marcas %}
                 <option value="" hidden>Seleccione</option>
-                <option value="{{ marca[0] }}">{{marca[o]}} - {{marca[1]}} </option>
+                <option value="{{ marca[0] }}">{{marca[0]}} - {{marca[1]}} </option>
                 {% endfor %}              
               </select>
             </div>
@@ -97,7 +97,7 @@
             <td>{{ modelo[6]  }}</td>
             <td>
               <form action="/admin/ModelosAdmin/borrar" method="POST" style="display:inline-block;">
-                <input type="hidden" name="id_modelo" value="{{ modelo[0]  }}">
+                <input type="hidden" id="id_modelo" name="id_modelo" value="{{ modelo[0]  }}">
                 <button type="submit" class="btn btn-danger btn-sm">
                   Eliminar
                 </button>

@@ -336,12 +336,13 @@ def admin_modelos_guardar():
 
 
 
-    sql = "INSERT INTO modelos ('num_modelo', 'marca', 'categoria', 'anio_lanzamiento','id_marca', 'id_categoria') VALUES (%s, %s, %s, %s, %s, %s)"
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+    sql = "INSERT INTO modelos (num_modelo, marca, categoria, anio_lanzamiento,id_marca, id_categoria) VALUES (%s, %s, %s, %s, %s, %s)"
     datos = (num_modelo, marca, categoria, anio_lanzamiento, id_marca, id_categoria)
-    conexion = mysql.connector.connect(**config)
-    cursor = conexion.cursor()
+    
     cursor.execute(sql, datos)
-    conexion.commit()
+    conn.commit()
     
 
     print(num_modelo)
@@ -351,7 +352,7 @@ def admin_modelos_guardar():
     print(id_marca)
     print(id_categoria)
 
-    return redirect('/admin/ModelosAdmin')
+    return redirect('/ModelosAdmin')
 
 @app.route('/admin/ModelosAdmin/borrar', methods = ['POST'])
 def admin_modelos_borrar():
@@ -370,7 +371,225 @@ def admin_modelos_borrar():
     cursor.close()
     conn.close()
 
-    return redirect('/admin/ModelosAdmin')
+    return redirect('/ModelosAdmin')
+
+
+@app.route('/MotosAdmin')
+def admin_motos():
+    if not 'login' in session:
+        return redirect('/admin/loginAdmin')
+
+    conn = mysql.connector.connect(**config) # Crear una conexión al servidor MySQL
+    cursor = conn.cursor() # Crear un cursor para ejecutar comandos SQL
+
+    cursor.execute("SELECT * FROM motos")
+    motos = cursor.fetchall()
+    
+    print(motos)
+
+    cursor.execute("SELECT * FROM ficha_tecnica")
+    ficha_tecnica = cursor.fetchall()
+    
+
+    cursor.execute("SELECT * FROM usuarios")
+    usuarios = cursor.fetchall()
+    
+    # Cerrar el cursor y la conexión
+    cursor.close()
+    conn.close()
+
+    return render_template('admin/MotosAdmin.html', motos = motos, ficha_tecnica = ficha_tecnica, usuarios = usuarios)
+
+
+@app.route('/admin/MotosAdmin/guardar', methods = ['POST'])
+def admin_motos_guardar():
+
+    if not 'login' in session:
+        return redirect('/admin/loginAdmin')
+    
+    num_serie = request.form['num_serie']
+    nom_moto = request.form['nom_moto']
+    id_ficha = request.form['id_ficha']
+    id_usuario = request.form['id_usuario']
+
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+    sql = "INSERT INTO motos (num_serie, nom_moto, id_ficha, id_usuario) VALUES (%s, %s, %s, %s)"
+    datos = (num_serie, nom_moto, id_ficha, id_usuario)
+
+    cursor.execute(sql, datos)
+    conn.commit()
+
+    print(num_serie)
+    print(nom_moto)
+    print(id_ficha)
+    print(id_usuario)
+
+    return redirect('/MotosAdmin')
+
+
+@app.route('/admin/MotosAdmin/borrar', methods = ['POST'])
+def admin_motos_borrar():
+
+    if not 'login' in session:
+        return redirect('/admin/loginAdmin')
+    
+
+    id_motos  = request.form['id_motos ']
+
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+    sql = "DELETE FROM motos WHERE id_motos  = %s"
+    cursor.execute(sql, [id_motos ])
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect('/MotosAdmin')
+
+
+@app.route('/FichaTecAdmin')
+def admin_ficha_tecnica():
+    if not 'login' in session:
+        return redirect('/admin/loginAdmin')
+
+    conn = mysql.connector.connect(**config) # Crear una conexión al servidor MySQL
+    cursor = conn.cursor() # Crear un cursor para ejecutar comandos SQL
+
+    cursor.execute("SELECT * FROM ficha_tecnica")
+    ficha_tecnica = cursor.fetchall()
+    
+    print(ficha_tecnica)
+
+    cursor.execute("SELECT * FROM modelos")
+    modelos = cursor.fetchall()
+    
+
+    cursor.execute("SELECT * FROM tipos_motor")
+    tipos_motor = cursor.fetchall()
+    
+    # Cerrar el cursor y la conexión
+    cursor.close()
+    conn.close()
+
+    return render_template('admin/FichaTecAdmin.html', ficha_tecnica = ficha_tecnica, modelos = modelos, tipos_motor = tipos_motor)
+
+
+
+@app.route('/admin/FichaTecAdmin/guardar', methods = ['POST'])
+def admin_ficha_tecnica_guardar():
+
+    if not 'login' in session:
+        return redirect('/admin/loginAdmin')
+    
+    modelo = request.form['modelo']
+    motor = request.form['motor']
+    cilindraje = request.form['cilindraje']
+    potencia_hp = request.form['potencia_hp']
+    torque_nm =	request.form['torque_nm']
+    transmision = request.form['transmision'] 
+    cap_combustible = request.form['cap_combustible']
+    peso_kg = request.form['peso_kg']
+    velocidad_max_kmh = request.form['velocidad_max_kmh']
+    id_modelo = request.form['id_modelo']
+    id_tipo = request.form['id_tipo']
+
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+    sql = "INSERT INTO ficha_tecnica (modelo, motor, cilindraje, potencia_hp, torque_nm, transmision, cap_combustible, peso_kg, velocidad_max_kmh, id_modelo, id_tipo) VALUES (%s, %s, %s, %s, %s, %s, %s, %s , %s , %s, %s)"
+    datos = (modelo, motor, cilindraje, potencia_hp, torque_nm, transmision, cap_combustible, peso_kg, velocidad_max_kmh, id_modelo, id_tipo)
+
+    cursor.execute(sql, datos)
+    conn.commit()
+    
+    print(modelo)
+    print(motor)
+    print(cilindraje)
+    print(potencia_hp)
+    print(torque_nm)
+    print(transmision)
+    print(cap_combustible)
+    print(peso_kg)
+    print(velocidad_max_kmh)
+    print(id_modelo)
+    print(id_tipo)
+
+    return redirect('/FichaTecAdmin')
+
+@app.route('/admin/FichaTecAdmin/borrar', methods = ['POST'])
+def admin_ficha_tecnica_borrar():
+
+    if not 'login' in session:
+        return redirect('/admin/loginAdmin')
+    
+
+    id_ficha  = request.form['id_ficha ']
+
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+    sql = "DELETE FROM ficha_tecnica WHERE id_ficha  = %s"
+    cursor.execute(sql, [id_ficha ])
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect('/FichaTecAdmin')
+
+@app.route('/admin/TipoMotorAdmin')
+def admin_tipos_motor():
+    if not 'login' in session:
+        return redirect('/admin/loginAdmin')
+    
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM tipos_motor')
+    tipomotor  = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    print("Tipos:", tipomotor )  
+
+    return render_template('/admin/TipoMotorAdmin.html', tipomotor = tipomotor )
+
+
+@app.route('/admin/TipoMotorAdmin/guardar', methods=['POST'])
+def admin_tipos_motor_guardar():
+    if not 'login' in session:
+        return redirect('/admin/loginAdmin')
+    
+    tipo = request.form['tipo']
+
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+    sql = "INSERT INTO tipos_motor (tipo) VALUES (%s)"
+    cursor.execute(sql,(tipo))
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect('/TipoMotorAdmin') 
+
+@app.route('/admin/TipoMotorAdmin/borrar', methods=['POST'])
+def admin_tipos_motor_borrar():
+
+    if not 'login' in session:
+        return redirect('/admin/loginAdmin')
+    
+    id_tipo = request.form['id_tipo']
+
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+    sql = "DELETE FROM tipos_motor WHERE id_tipo = %s"
+    cursor.execute(sql, [id_tipo])
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect('/TipoMotorAdmin')
+
+
+
 
 
 

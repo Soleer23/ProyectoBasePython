@@ -1,0 +1,127 @@
+{% include 'admin/cabecera2.html' %}
+
+<div class="container mt-4">
+  <div class="row">
+    <!-- FORMULARIO -->
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">Datos de las Motos</h5>
+        </div>
+        <div class="card-body">
+          <form action="/admin/MotosAdmin/guardar" method="POST">
+            <div class="mb-3">
+              <label for="num_serie" class="form-label">Número de serie:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="num_serie"
+                name="num_serie"
+                placeholder="Ingrese el número de serie"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="nom_moto" class="form-label">Nombre de la Moto:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nom_moto"
+                name="nom_moto"
+                placeholder="Ingrese el nombre de la moto"
+                required
+              />
+            </div>
+
+
+
+            <div class="mb-3">
+              <label for="id_ficha" class="form-label">ID Ficha tecnica:</label>
+              <select
+                name="id_ficha"
+                id="id_ficha"
+                class="form-control"
+                required
+              >
+                {% for 	ficha in ficha_tecnica %}
+                <option value="" hidden>Seleccione</option>
+                <option value="{{ ficha[0] }}">
+                  {{ficha[0]}} - {{ficha[1]}}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="id_usuario" class="form-label">ID Usuario:</label>
+              <select
+                name="id_usuario"
+                id="id_usuario"
+                class="form-control"
+                required
+              >
+                {% for usuario in usuarios %}
+                <option value="" hidden>Seleccione</option>
+                <option value="{{ usuario[0] }}">
+                  {{usuario[0]}} - {{usuario[1]}}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Agregar</button>
+          </form>
+        </div>
+        <div class="card-footer text-center text-muted">Footer</div>
+      </div>
+    </div>
+
+    <!-- TABLA -->
+    <div class="col-md-8">
+      <table class="table table-bordered table-hover shadow-sm">
+        <thead class="table-light">
+          <tr>
+            <th>ID Moto</th>
+            <th>Numero de serie</th>
+            <th>Nombre Moto</th>
+            <th>ID Ficha</th>
+            <th>ID Usuario </th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for moto in motos %}
+          <tr>
+            <td>{{ moto[0] }}</td>
+            <td>{{ moto[1] }}</td>
+            <td>{{ moto[2] }}</td>
+            <td>{{ moto[3] }}</td>
+            <td>{{ moto[4] }}</td>
+            <td>{{ moto[5] }}</td>
+            <td>
+              <form
+                action="/admin/MotosAdmin/borar
+                method="POST"
+                style="display: inline-block"
+              >
+                <input
+                  type="hidden"
+                  id="id_motos"
+                  name="id_motos"
+                  value="{{ mootos[0]  }}"
+                />
+                <button type="submit" class="btn btn-danger btn-sm">
+                  Eliminar
+                </button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% include 'admin/pieAdmin.html' %}
