@@ -1,0 +1,17 @@
+{% include 'sitio/cabecera.html' %}
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-text">
+      <h1>Conocimiento, historia y pasión por las motocicletas</h1>
+      <p>
+        Explora la evolución, tecnología y diseño que han marcado el camino 
+        de las motocicletas icónicas. Sin ventas, solo amor por la velocidad.
+      </p>
+      <a href="/modelos" class="btn-hero">Explorar modelos</a>
+    </div>
+    <div class="hero-logo">
+      <img src="{{ url_for('static', filename='img/frun.png') }}" alt="Motorized Love">
+    </div>
+  </div>
+</section>
+{% include 'sitio/pie.html' %}

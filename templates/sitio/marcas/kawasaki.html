@@ -1,0 +1,54 @@
+{% include 'sitio/cabecera.html' %}
+
+<section class="marca-detalle py-5">
+  <div class="container">
+    <h1 class="text-center fw-bold text-primary mb-4">Kawasaki</h1>
+    <p class="text-center text-muted mb-5">
+      Potencia verde y espíritu deportivo que dominan las pistas del mundo.
+    </p>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/kawasaki_ninja_h2r.jpg') }}" class="card-img-top" alt="Kawasaki Ninja H2R">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Ninja H2R</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 998 cc</li>
+              <li><span>Potencia:</span> 310 HP</li>
+              <li><span>Peso:</span> 216 kg</li>
+              <li><span>Velocidad Máx:</span> 400 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/kawasaki_z900.jpg') }}" class="card-img-top" alt="Kawasaki Z900">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Z900</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 948 cc</li>
+              <li><span>Potencia:</span> 125 HP</li>
+              <li><span>Peso:</span> 212 kg</li>
+              <li><span>Velocidad Máx:</span> 240 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="../marcas" class="btn btn-outline-primary">
+        <i class="bi bi-arrow-left"></i> Volver a ver Marcas
+      </a>
+    </div>
+  </div>
+</section>
+
+{% include 'sitio/pie.html' %}

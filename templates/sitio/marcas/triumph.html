@@ -1,0 +1,54 @@
+{% include 'sitio/cabecera.html' %}
+
+<section class="marca-detalle py-5">
+  <div class="container">
+    <h1 class="text-center fw-bold text-primary mb-4">Triumph</h1>
+    <p class="text-center text-muted mb-5">
+      Estilo británico, elegancia y carácter clásico en cada máquina.
+    </p>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/triumph_speed_triple.jpg') }}" class="card-img-top" alt="Triumph Speed Triple 1200 RS">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Speed Triple 1200 RS</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 1160 cc</li>
+              <li><span>Potencia:</span> 180 HP</li>
+              <li><span>Peso:</span> 198 kg</li>
+              <li><span>Velocidad Máx:</span> 250 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/triumph_bonneville.jpg') }}" class="card-img-top" alt="Triumph Bonneville T120">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Bonneville T120</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 1200 cc</li>
+              <li><span>Potencia:</span> 80 HP</li>
+              <li><span>Peso:</span> 236 kg</li>
+              <li><span>Velocidad Máx:</span> 193 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="../marcas" class="btn btn-outline-primary">
+        <i class="bi bi-arrow-left"></i> Volver a ver Marcas
+      </a>
+    </div>
+  </div>
+</section>
+
+{% include 'sitio/pie.html' %}

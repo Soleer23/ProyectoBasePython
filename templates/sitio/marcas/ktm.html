@@ -1,0 +1,54 @@
+{% include 'sitio/cabecera.html' %}
+
+<section class="marca-detalle py-5">
+  <div class="container">
+    <h1 class="text-center fw-bold text-primary mb-4">KTM</h1>
+    <p class="text-center text-muted mb-5">
+      Energía naranja y tecnología austríaca al servicio del rendimiento extremo.
+    </p>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/ktm_superduke.jpg') }}" class="card-img-top" alt="KTM 1290 Super Duke R">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">1290 Super Duke R</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 1301 cc</li>
+              <li><span>Potencia:</span> 180 HP</li>
+              <li><span>Peso:</span> 189 kg</li>
+              <li><span>Velocidad Máx:</span> 289 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/ktm_890_duke.jpg') }}" class="card-img-top" alt="KTM 890 Duke">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">890 Duke</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 889 cc</li>
+              <li><span>Potencia:</span> 115 HP</li>
+              <li><span>Peso:</span> 169 kg</li>
+              <li><span>Velocidad Máx:</span> 240 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="../marcas" class="btn btn-outline-primary">
+        <i class="bi bi-arrow-left"></i> Volver a ver Marcas
+      </a>
+    </div>
+  </div>
+</section>
+
+{% include 'sitio/pie.html' %}

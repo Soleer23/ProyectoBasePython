@@ -1,0 +1,71 @@
+{% include 'sitio/cabecera.html' %}
+
+<div class="brand-cards">
+
+  <!-- Yamaha -->
+  <a href="{{ url_for('marca_detalle', nombre='yamaha') }}" class="brand-card text-decoration-none text-dark">
+    <img src="{{ url_for('static', filename='img/logoYAMAHA-removebg-preview.png') }}" alt="Yamaha">
+    <h3>Yamaha</h3>
+    <p>Innovación japonesa con equilibrio entre potencia y estilo deportivo.</p>
+  </a>
+
+  <!-- Harley-Davidson -->
+  <a href="{{ url_for('marca_detalle', nombre='harley') }}" class="brand-card text-decoration-none text-dark">
+    <img src="{{ url_for('static', filename='img/harley.png') }}" alt="Harley-Davidson">
+    <h3>Harley-Davidson</h3>
+    <p>El rugido americano que representa libertad y cultura sobre ruedas.</p>
+  </a>
+
+  <!-- Ducati -->
+  <a href="{{ url_for('marca_detalle', nombre='ducati') }}" class="brand-card text-decoration-none text-dark">
+    <img src="{{ url_for('static', filename='img/ducati.png') }}" alt="Ducati">
+    <h3>Ducati</h3>
+    <p>Diseño italiano y precisión en ingeniería, pura pasión por la velocidad.</p>
+  </a>
+
+  <!-- Honda -->
+  <a href="{{ url_for('marca_detalle', nombre='honda') }}" class="brand-card text-decoration-none text-dark">
+    <img src="{{ url_for('static', filename='img/honda.png') }}" alt="Honda">
+    <h3>Honda</h3>
+    <p>Confiabilidad japonesa que combina innovación, rendimiento y equilibrio perfecto.</p>
+  </a>
+
+  <!-- BMW -->
+  <a href="{{ url_for('marca_detalle', nombre='bmwm') }}" class="brand-card text-decoration-none text-dark">
+    <img src="{{ url_for('static', filename='img/bmw.png') }}" alt="BMW">
+    <h3>BMW Motorrad</h3>
+    <p>Ingeniería alemana de precisión con una visión futurista del motociclismo.</p>
+  </a>
+
+  <!-- Kawasaki -->
+  <a href="{{ url_for('marca_detalle', nombre='kawasaki') }}" class="brand-card text-decoration-none text-dark">
+    <img src="{{ url_for('static', filename='img/kawasaki.png') }}" alt="Kawasaki">
+    <h3>Kawasaki</h3>
+    <p>Potencia extrema y diseño agresivo, sinónimo de velocidad y adrenalina.</p>
+  </a>
+
+  <!-- Suzuki -->
+  <a href="{{ url_for('marca_detalle', nombre='suzuki') }}" class="brand-card text-decoration-none text-dark">
+    <img src="{{ url_for('static', filename='img/suzuki.png') }}" alt="Suzuki">
+    <h3>Suzuki</h3>
+    <p>Versatilidad y equilibrio, con motos que destacan por su rendimiento confiable.</p>
+  </a>
+
+  <!-- KTM -->
+  <a href="{{ url_for('marca_detalle', nombre='ktm') }}" class="brand-card text-decoration-none text-dark">
+    <img src="{{ url_for('static', filename='img/ktm.png') }}" alt="KTM">
+    <h3>KTM</h3>
+    <p>El espíritu del motocross y la aventura, con diseños audaces y livianos.</p>
+  </a>
+
+  <!-- Triumph -->
+  <a href="{{ url_for('marca_detalle', nombre='triumph') }}" class="brand-card text-decoration-none text-dark">
+    <img src="{{ url_for('static', filename='img/triumph.png') }}" alt="Triumph">
+    <h3>Triumph</h3>
+    <p>Tradición británica con una elegancia clásica y un rugido moderno.</p>
+  </a>
+
+</div>
+
+
+{% include 'sitio/pie.html' %}

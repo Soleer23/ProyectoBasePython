@@ -1,65 +1,28 @@
-from flask import Flask, jsonify
-from flask import flash, get_flashed_messages # se importan para poder enviar mensajes a sweetAlerte2
-from flask import render_template, session
-from flask import url_for
-from flask import request                 #recepciona la informacion "DEL FORMULARIO"
-from flask import redirect                #redirecciona "MUESTRA LA INFORMACION PARA LAS TABLAS"
-import mysql.connector                   #Se importa libreria para conexion a base de datos 
-from datetime import datetime             #Se importa para colocar un tiempo exacto "Para la imagen"
-from flask import send_from_directory     #optenemos informacion de la imagen
-from flask import abort #obtenemos la informacion de la imagen, es necesaria para mostrar las imagenes
+from flask import Flask, render_template, jsonify, flash, get_flashed_messages
+from flask import session, url_for, request, redirect, send_from_directory, abort
+import mysql.connector
+from datetime import datetime
 import os
 
+app = Flask(__name__)
+app.secret_key = "Alejo"
 
-
-
-
-app = Flask(__name__) #se crea la aplicacion
-app.secret_key="Alejo"  
-
-# Configuración de la conexión MySQL usando MySQL X Protocol
+# Configuración de la conexión MySQL
 config = {
     'user': 'root',
     'password': '',
     'host': 'localhost',
-    'port': 3306,                  # Puerto para MySQL X Protocol
+    'port': 3306,
     'database': 'motos_db_simple'
 }
 
-
+# ==========================
+#      RUTAS PÚBLICAS
+# ==========================
 
 @app.route('/')
 def inicio():
-    
-    return render_template('sitio/index.html')
-
-
-""" Mostramos la imagen y la enviamos a la ruta  """
-@app.route('/img/libros/<imagen>')
-def imagenes(imagen):
-    print(imagen)
-    return send_from_directory(os.path.join('templates/sitio/img/libros'),imagen)
-
-#enlazar los archivos css
-""" 
-@app.route('/css/<archivocss>')
-def css(archivocss):
-    return send_from_directory(os.path.join("templates/sitio/css"), archivocss) 
-"""
-
-
-@app.route('/libros')
-def libros():
-
-    conn = mysql.connector.connect(**config) # Crear una conexión al servidor MySQL
-    cursor = conn.cursor() # Crear un cursor para ejecutar comandos SQL    
-    cursor.execute('SELECT * FROM libros') # Ejecutar una consulta SQL     
-    listaLibros = cursor.fetchall() # Obtener los resultados de la consulta
-    # Cerrar el cursor y la conexión
-    cursor.close()
-    conn.close()
-
-    return render_template('sitio/libros.html', listaLibros = listaLibros)
+    return render_template('/sitio/index.html')
 
 
 @app.route('/nosotros')
@@ -67,8 +30,137 @@ def nosotros():
     return render_template('sitio/nosotros.html')
 
 
+@app.route('/marcas')
+def marcas_public():
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM marcas')
+    marcas = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return render_template('/sitio/marcas.html', marcas=marcas)
+
+@app.route('/marca/<nombre>')
+def marca_detalle(nombre):
+    try:
+        nombre = nombre.lower()
+
+        paginas = {
+            'yamaha': 'yamaha.html',
+            'harley': 'harley.html',
+            'ducati': 'ducati.html',
+            'honda': 'honda.html',
+            'bmw': 'bmw.html',
+            'kawasaki': 'kawasaki.html',
+            'suzuki': 'suzuki.html',
+            'ktm': 'ktm.html',
+            'triumph': 'triumph.html'
+        }
+
+        if nombre in paginas:
+            return render_template(f"sitio/marcas/{paginas[nombre]}")
+        else:
+            abort(404)
+
+    except Exception as e:
+        print("Error al cargar marca:", e)
+        abort(500)
 
 
+@app.route('/')
+def tipos_motos_public():
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM categorias')
+    categorias = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return render_template('sitio/tiposdemotos.html', categorias=categorias)
+
+
+@app.route('/modelos')
+def modelos_public():
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+    cursor.execute("""
+        SELECT m.id_modelo, m.num_modelo, ma.nom_marca, c.nom_categ, m.anio_lanzamiento
+        FROM modelos m
+        JOIN marcas ma ON m.id_marca = ma.id_marca
+        JOIN categorias c ON m.id_categoria = c.id_categoria
+    """)
+    modelos = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return render_template('sitio/modelos.html', modelos=modelos)
+
+
+@app.route('/fichatecnica')
+def fichatecnica_public():
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+    cursor.execute("""
+        SELECT f.id_ficha, f.modelo, f.motor, f.cilindraje, f.potencia_hp, 
+        f.torque_nm, f.transmision, f.cap_combustible, f.peso_kg, f.velocidad_max_kmh
+        FROM ficha_tecnica f
+    """)
+    fichas = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return render_template('sitio/fichatecnica.html', fichas=fichas)
+
+
+@app.route('/reseñas')
+def reseñas():
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM resenas")
+    reseñas = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    promedio = 0
+    if reseñas:
+        total = sum(int(r['calificacion']) for r in reseñas)
+        promedio = round(total / len(reseñas), 1)
+
+    return render_template('sitio/reseñas.html', reseñas=reseñas, promedio=promedio)
+
+
+@app.route('/reseñas/agregar', methods=['POST'])
+def agregar_resena():
+    usuario = request.form['usuario']
+    modelo = request.form['modelo']
+    calificacion = request.form['calificacion']
+    comentario = request.form['comentario']
+
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT id_usuario FROM usuarios WHERE nom_user = %s", (usuario,))
+    id_usuario = cursor.fetchone()
+
+    cursor.execute("SELECT id_modelo FROM modelos WHERE num_modelo = %s", (modelo,))
+    id_modelo = cursor.fetchone()
+
+    id_usuario_val = id_usuario[0] if id_usuario else None
+    id_modelo_val = id_modelo[0] if id_modelo else None
+
+    sql = """
+        INSERT INTO resenas (usuario, modelo, calificacion, comentario, id_usuario, id_modelo)
+        VALUES (%s, %s, %s, %s, %s, %s)
+    """
+    datos = (usuario, modelo, calificacion, comentario, id_usuario_val, id_modelo_val)
+    cursor.execute(sql, datos)
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect('/reseñas')
+
+
+# ==========================
+#        ADMIN LOGIN
+# ==========================
 
 @app.route('/admin/')
 def admin_index():
@@ -84,33 +176,28 @@ def admin_index():
 def admin_login():
     return render_template('admin/loginAdmin.html')
 
-
-
-""" Ruta para login, solo se valida por codigo, NO por 
-    base de datos """
 @app.route('/admin/loginAdmin', methods=['POST'])
 def admin_login_post():
-
-    usuario  = request.form['usuario']
+    usuario = request.form['usuario']
     password = request.form['password']
-    #verifica que llega
-    print(usuario,password)
 
     if usuario == "Alejandro" and password == "2008":
         session["login"] = True
         session["user"] = "Alejandro"
-
         return redirect('/admin')
     else:
-        print(f"datos incorrectos")
+        return render_template('admin/loginAdmin.html', mensaje="Datos incorrectos")
 
-    return render_template('admin/loginAdmin.html', mensaje = "Datos incorrectos .|.")
 
 @app.route('/admin/cerrar')
 def admin_cerrar_session():
     session.clear()
     return redirect('/admin/loginAdmin')
 
+
+# ==========================
+#      PANEL ADMIN
+# ==========================
 
 @app.route('/UserAdmin')
 def usuario():
@@ -170,6 +257,7 @@ def admin_usuarios_borrar():
     conn.close()
 
     return redirect('/UserAdmin')
+
 
 
 
@@ -667,7 +755,6 @@ def admin_resenas_borrar():
     conn.close()
 
     return redirect('/ReseñasAdmin')
-
 
 
 

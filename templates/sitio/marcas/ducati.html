@@ -1,0 +1,56 @@
+{% include 'sitio/cabecera.html' %}
+
+<section class="marca-detalle py-5">
+  <div class="container">
+    <h1 class="text-center fw-bold text-primary mb-4">Ducati</h1>
+    <p class="text-center text-muted mb-5">
+      Pasión italiana, ingeniería de precisión y un sonido inconfundible.
+    </p>
+
+    <div class="row g-4">
+      <!-- Moto 1 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/ducati_panigale_v4.jpg') }}" class="card-img-top" alt="Ducati Panigale V4">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Panigale V4</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 1103 cc</li>
+              <li><span>Potencia:</span> 214 HP</li>
+              <li><span>Peso:</span> 198 kg</li>
+              <li><span>Velocidad Máx:</span> 305 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Moto 2 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/ducati_monster.jpg') }}" class="card-img-top" alt="Ducati Monster">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Monster</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 937 cc</li>
+              <li><span>Potencia:</span> 111 HP</li>
+              <li><span>Peso:</span> 188 kg</li>
+              <li><span>Velocidad Máx:</span> 230 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="../marcas" class="btn btn-outline-primary">
+        <i class="bi bi-arrow-left"></i> Volver a ver Marcas
+      </a>
+    </div>
+  </div>
+</section>
+
+{% include 'sitio/pie.html' %}

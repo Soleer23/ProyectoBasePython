@@ -11362,4 +11362,238 @@ section#contact form#contactForm :-ms-input-placeholder {
 }
 
 
+/* --- HERO SECTION --- */
+.hero {
+  background-color: #f4f5f7; /* Fondo claro, puedes probar #f5f7ff o #f0f0f0 */
+  padding: 100px 0;
+}
 
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  gap: 2rem;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-text h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #0f0f0f; /* Negro suave */
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.btn-hero {
+  background-color: #f4c542; /* Dorado */
+  color: #000;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-hero:hover {
+  background-color: #000;
+  color: #f4c542;
+}
+
+.hero-logo img {
+  width: 320px;
+  max-width: 100%;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+/* --- SECCIÓN DE MARCAS --- */
+.brands {
+  background-color: #fff;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.container-brands {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.brands h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.5rem;
+}
+
+.brands .subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 3rem;
+}
+
+.brand-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.brand-card {
+  background-color: #f8f9fb;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brand-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+.brand-card img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 1.2rem;
+}
+
+.brand-card h3 {
+  color: #111;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.brand-card p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* ==== Estilos generales ==== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* ==== Título principal ==== */
+h1 {
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #0d6efd;
+}
+
+/* ==== Tarjetas de motos ==== */
+.card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background-color: #ffffff;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ==== Imagen de la moto ==== */
+.card-img-top {
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 2px solid #eee;
+}
+
+/* ==== Contenido interno ==== */
+.card-body {
+  padding: 1rem 1.25rem;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #0d6efd;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #555;
+  height: 60px;
+  overflow: hidden;
+}
+
+.text-primary {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* ==== Adaptación responsiva ==== */
+@media (max-width: 768px) {
+  .card-img-top {
+    height: 180px;
+  }
+}
+
+.categoria-label {
+  display: inline-block;
+  background: linear-gradient(90deg, #ffe082, #ffe082);
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 6px 14px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+  margin-left: 10px;
+  transition: all 0.3s ease;
+}
+
+.categoria-label:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+.moto-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.moto-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.moto-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.moto-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+.categoria-label {
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 8px #ffd700; }
+  to { box-shadow: 0 0 20px #0f0f0f; }
+}
+
+.marca-detalle .categoria-label {
+  display: inline-block;
+  width: auto;
+}
+.brand-logo:hover {
+  transform: scale(1.1) rotate(-3deg);
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.2));
+}
+.brand-logo:hover {
+  transform: scale(1.1) rotate(-2deg);
+  filter: drop-shadow(0 0 8px rgba(0,0,0,0.25));
+}

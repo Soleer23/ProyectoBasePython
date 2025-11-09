@@ -1,0 +1,56 @@
+{% include 'sitio/cabecera.html' %}
+
+<section class="marca-detalle py-5">
+  <div class="container">
+    <h1 class="text-center fw-bold text-primary mb-4">Harley-Davidson</h1>
+    <p class="text-center text-muted mb-5">
+      Icono americano del motociclismo, sinónimo de libertad, poder y tradición.
+    </p>
+
+    <div class="row g-4">
+      <!-- Moto 1 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/harley_street_glide.jpg') }}" class="card-img-top" alt="Harley-Davidson Street Glide">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Street Glide</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 1868 cc</li>
+              <li><span>Potencia:</span> 89 HP</li>
+              <li><span>Peso:</span> 375 kg</li>
+              <li><span>Velocidad Máx:</span> 190 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Moto 2 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/harley_iron883.jpg') }}" class="card-img-top" alt="Harley-Davidson Iron 883">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Iron 883</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 883 cc</li>
+              <li><span>Potencia:</span> 49 HP</li>
+              <li><span>Peso:</span> 256 kg</li>
+              <li><span>Velocidad Máx:</span> 170 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="../marcas" class="btn btn-outline-primary">
+        <i class="bi bi-arrow-left"></i> Volver a ver Marcas
+      </a>
+    </div>
+  </div>
+</section>
+
+{% include 'sitio/pie.html' %}

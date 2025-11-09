@@ -1,0 +1,54 @@
+{% include 'sitio/cabecera.html' %}
+
+<section class="marca-detalle py-5">
+  <div class="container">
+    <h1 class="text-center fw-bold text-primary mb-4">Honda</h1>
+    <p class="text-center text-muted mb-5">
+      Ingeniería japonesa confiable y rendimiento excepcional en cada modelo.
+    </p>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/honda_cbr1000rr.jpg') }}" class="card-img-top" alt="Honda CBR1000RR">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">CBR1000RR</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 999 cc</li>
+              <li><span>Potencia:</span> 214 HP</li>
+              <li><span>Peso:</span> 201 kg</li>
+              <li><span>Velocidad Máx:</span> 299 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/honda_cb650r.jpg') }}" class="card-img-top" alt="Honda CB650R">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">CB650R</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 649 cc</li>
+              <li><span>Potencia:</span> 94 HP</li>
+              <li><span>Peso:</span> 202 kg</li>
+              <li><span>Velocidad Máx:</span> 240 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="../marcas" class="btn btn-outline-primary">
+        <i class="bi bi-arrow-left"></i> Volver a ver Marcas
+      </a>
+    </div>
+  </div>
+</section>
+
+{% include 'sitio/pie.html' %}

@@ -1,0 +1,211 @@
+{% include 'sitio/cabecera.html' %} {% block title %}{% endblock %} {% block
+contenido %}
+<div class="container my-5">
+  <!-- PROMEDIO GENERAL -->
+  {% if reseñas %}
+  <div class="text-center mb-5">
+    <h2 class="fw-bold text-primary mb-2">
+      ⭐ Promedio general: {{ promedio }}
+    </h2>
+    <p class="text-muted mb-3">
+      Basado en {{ reseñas|length }} reseña{% if reseñas|length > 1 %}s{% endif
+      %} de nuestros usuarios
+    </p>
+
+    <!-- Barra de progreso visual estilo oro metálico -->
+    <div
+      class="progress mx-auto"
+      style="
+        height: 1.4rem;
+        width: 60%;
+        max-width: 400px;
+        border-radius: 1rem;
+        overflow: hidden;
+      "
+    >
+      <div
+        class="progress-bar progress-bar-metallic fw-semibold text-dark"
+        role="progressbar"
+        style="width: {{ (promedio / 5) * 100 }}%;
+        aria-valuenow="{{ promedio }}"
+        aria-valuemin="0"
+        aria-valuemax="5"
+      >
+        {{ promedio }} / 5
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* ✨ Efecto oro metálico animado */
+    .progress-bar-metallic {
+      background: linear-gradient(
+        120deg,
+        #b8860b,
+        #ffd700,
+        #fff8dc,
+        #b8860b,
+        #ffd700
+      );
+      background-size: 300% 300%;
+      animation: shine 3s linear infinite;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      color: #4a3b00;
+      text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+    }
+
+    @keyframes shine {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  </style>
+  {% endif %}
+
+  <!-- FORMULARIO DE RESEÑA -->
+  <div class="card shadow-sm border-0 mb-5">
+    <div class="card-body">
+      <h4 class="fw-bold mb-3">Deja tu reseña</h4>
+      <form action="/reseñas/agregar" method="POST">
+        <div class="mb-3">
+          <label for="usuario" class="form-label">Tu nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="usuario"
+            name="usuario"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="modelo" class="form-label"
+            >Escribe el modelo que más te gustó</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="modelo"
+            name="modelo"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Calificación</label>
+          <select class="form-select" name="calificacion">
+            {% for i in range(1,6) %}
+            <option value="{{i}}">{{i}} ⭐</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="comentario" class="form-label">Comentario</label>
+          <textarea
+            class="form-control"
+            id="comentario"
+            name="comentario"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar reseña</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- LISTA DE RESEÑAS -->
+  <h1 class="text-center mb-4 fw-bold text-primary">
+    Reseñas de nuestros usuarios
+  </h1>
+  <p class="text-center text-muted mb-5">
+    Opiniones auténticas sobre las motocicletas más destacadas.
+  </p>
+
+  {% if reseñas %}
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for resena in reseñas %}
+    <div class="col">
+      <div class="card shadow-sm border-0 h-100 hover-card">
+        <div class="card-body">
+          <h5 class="card-title text-dark fw-bold mb-3">
+            <i class="bi bi-chat-quote-fill text-primary me-2"></i>
+            Reseña #{{ resena.id_resena }}
+          </h5>
+
+          <div class="mb-2">
+            <span class="fw-semibold text-secondary">👤 Nombre:</span>
+            <span class="fw-bold text-dark ms-1">{{ resena.usuario }}</span>
+          </div>
+
+          <div class="mb-2">
+            <span class="fw-semibold text-secondary">🏍️ Modelo:</span>
+            <span class="fw-bold text-dark ms-1">{{ resena.modelo }}</span>
+          </div>
+
+          <div class="mb-3">
+            <span class="fw-semibold text-secondary">⭐ Calificación:</span>
+            <span class="ms-1">
+              <strong class="text-dark">{{ resena.calificacion }}</strong>
+              {% for i in range(1,6) %} {% if i <= resena.calificacion|int %}
+              <i class="bi bi-star-fill text-warning"></i>
+              {% else %}
+              <i class="bi bi-star text-secondary"></i>
+              {% endif %} {% endfor %}
+            </span>
+          </div>
+
+          <hr />
+
+          <div>
+            <span class="fw-semibold text-secondary">💬 Comentario:</span>
+            <blockquote
+              class="text-dark fst-italic ms-2 mt-2 border-start border-3 border-primary ps-3"
+            >
+              {{ resena.comentario }}
+            </blockquote>
+          </div>
+        </div>
+        <div class="card-footer bg-light text-end small text-muted">
+          Última actualización • {{ resena.fecha_resena or "Reciente" }}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% else %}
+  <div class="text-center text-muted py-5">
+    <i class="bi bi-emoji-frown display-4 d-block mb-3"></i>
+    <p class="lead">Aún no hay reseñas disponibles.</p>
+  </div>
+  {% endif %}
+</div>
+
+<!-- ESTILOS -->
+<style>
+  .hover-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15);
+  }
+  .card-footer {
+    font-size: 0.85rem;
+  }
+  blockquote {
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+  }
+</style>
+
+{% endblock %} {% include 'sitio/pie.html' %}
