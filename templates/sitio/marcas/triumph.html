@@ -2,53 +2,328 @@
 
 <section class="marca-detalle py-5">
   <div class="container">
-    <h1 class="text-center fw-bold text-primary mb-4">Triumph</h1>
-    <p class="text-center text-muted mb-5">
-      Estilo británico, elegancia y carácter clásico en cada máquina.
-    </p>
+    <!-- Logo y nombre centrados -->
+    <div class="text-center mb-5">
+      <div class="d-flex justify-content-center align-items-center gap-3 mb-4">
+      <img src="{{ url_for('static', filename='img/triumph.png') }}"
+        class="brand-logo img-fluid"
+        style="height:80px; width:auto; transition: all 0.4s ease; filter: drop-shadow(0 0 5px rgba(0,0,0,0.15));">
+
+        <h1 class="fw-bold text-dark mb-0">TRIUMPH</h1>
+      </div>
+      <p class="text-muted">
+        Versatilidad y equilibrio, con motos que destacan por su rendimiento confiable.
+      </p>
+      <p class="text-dark"
+      >En esta seccion te mostraremos los modelos mas destacados de la marca.
+      </p>
+    </div>
+
+
+    <!-- Recuadro de categoría alineado a la izquierda -->
+    <div class="categoria-label mb-4 text-dark text-start">
+      <span>Deportivas</span>
+    </div>
 
     <div class="row g-4">
+      <!-- Moto 1 -->
       <div class="col-md-6 col-lg-4">
         <div class="card moto-card h-100 shadow border-0">
           <div class="moto-img-container">
-            <img src="{{ url_for('static', filename='img/motos/triumph_speed_triple.jpg') }}" class="card-img-top" alt="Triumph Speed Triple 1200 RS">
+            <img src="{{ url_for('static', filename='img/motos/yamahar1.png') }}" class="card-img-top" alt="Yamaha R1">
           </div>
           <div class="card-body">
-            <h5 class="card-title fw-bold text-dark">Speed Triple 1200 RS</h5>
+            <h5 class="card-title fw-bold text-dark">Yamaha YZF-R1</h5>
             <ul class="list-unstyled ficha-tecnica">
-              <li><span>Cilindraje:</span> 1160 cc</li>
-              <li><span>Potencia:</span> 180 HP</li>
-              <li><span>Peso:</span> 198 kg</li>
+              <li><span>Cilindraje:</span> 998 cc</li>
+              <li><span>Potencia:</span> 200 HP</li>
+              <li><span>Peso:</span> 201 kg</li>
+              <li><span>Velocidad Máx:</span> 299 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Moto 2 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/mt09.jpg') }}" class="card-img-top" alt="Yamaha MT-09">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Yamaha MT-09</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 890 cc</li>
+              <li><span>Potencia:</span> 119 HP</li>
+              <li><span>Peso:</span> 189 kg</li>
+              <li><span>Velocidad Máx:</span> 225 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Moto 3 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/yamahar9.jpg') }}" class="card-img-top" alt="Yamaha R9">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Yamaha R9</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 890 cc</li>
+              <li><span>Potencia:</span> 119 HP</li>
+              <li><span>Peso:</span> 195 kg</li>
               <li><span>Velocidad Máx:</span> 250 km/h</li>
             </ul>
           </div>
         </div>
       </div>
 
+
+      <!-- Moto 4 -->
       <div class="col-md-6 col-lg-4">
         <div class="card moto-card h-100 shadow border-0">
           <div class="moto-img-container">
-            <img src="{{ url_for('static', filename='img/motos/triumph_bonneville.jpg') }}" class="card-img-top" alt="Triumph Bonneville T120">
+            <img src="{{ url_for('static', filename='img/motos/yamaha125r.jpg') }}" class="card-img-top" alt="Yamaha R9">
           </div>
           <div class="card-body">
-            <h5 class="card-title fw-bold text-dark">Bonneville T120</h5>
+            <h5 class="card-title fw-bold text-dark">Yamaha 125-R</h5>
             <ul class="list-unstyled ficha-tecnica">
-              <li><span>Cilindraje:</span> 1200 cc</li>
-              <li><span>Potencia:</span> 80 HP</li>
-              <li><span>Peso:</span> 236 kg</li>
-              <li><span>Velocidad Máx:</span> 193 km/h</li>
+              <li><span>Cilindraje:</span> 125 cc</li>
+              <li><span>Potencia:</span> 15 HP</li>
+              <li><span>Peso:</span> 144 kg</li>
+              <li><span>Velocidad Máx:</span> 140 km/h</li>
             </ul>
           </div>
         </div>
       </div>
+
+      <!-- Moto 5-->
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/yamahar15.jpg') }}" class="card-img-top" alt="Yamaha R9">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Yamaha R-15</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 155 cc</li>
+              <li><span>Potencia:</span> 20 HP</li>
+              <li><span>Peso:</span> 137 kg</li>
+              <li><span>Velocidad Máx:</span> 148 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Moto 6 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/YamahaYZFR7.jpg') }}" class="card-img-top" alt="Yamaha R9">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Yamaha YZF-R7</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 689 cc</li>
+              <li><span>Potencia:</span> 73 HP</li>
+              <li><span>Peso:</span> 188 kg</li>
+              <li><span>Velocidad Máx:</span> 230 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+
+    <!-- 🔹 Recuadro de categoría -->
+    <div class="categoria-label mb-4 text-dark">
+      <span>Street</span>
     </div>
+
+    
+
+
+
+    
+    <div class="row g-4">
+      <!-- Moto 1 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/yamahafzv2.jpg') }}" class="card-img-top" alt="Yamaha R1">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Yamaha FZ-2.0</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 149 cc</li>
+              <li><span>Potencia:</span> 13 HP</li>
+              <li><span>Peso:</span> 132 kg</li>
+              <li><span>Velocidad Máx:</span> 115km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Moto 2 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+          <img src="{{ url_for('static', filename='img/motos/yamahatracer7.jpg') }}" class="card-img-top" alt="Yamaha MT-09">
+
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Yamaha Tracer 7</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 689 cc</li>
+              <li><span>Potencia:</span> 72 HP</li>
+              <li><span>Peso:</span> 212 kg</li>
+              <li><span>Velocidad Máx:</span> 200 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Moto 3 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/mt07.jpg') }}" class="card-img-top" alt="Yamaha R9">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Yamaha MT-07</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 689 cc</li>
+              <li><span>Potencia:</span> 75 HP</li>
+              <li><span>Peso:</span> 185 kg</li>
+              <li><span>Velocidad Máx:</span> 210 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Moto 4 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/yamahamt15.jpg') }}" class="card-img-top" alt="Yamaha R9">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Yamaha MT-15</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 155 cc</li>
+              <li><span>Potencia:</span> 19 HP</li>
+              <li><span>Peso:</span> 144 kg</li>
+              <li><span>Velocidad Máx:</span> 140 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Moto 5-->
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/yamahafz25.jpg') }}" class="card-img-top" alt="Yamaha R9">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Yamaha FZ-25</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span> 249 cc</li>
+              <li><span>Potencia:</span> 20 HP</li>
+              <li><span>Peso:</span> 151 kg</li>
+              <li><span>Velocidad Máx:</span> 140 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Moto 6 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card moto-card h-100 shadow border-0">
+          <div class="moto-img-container">
+            <img src="{{ url_for('static', filename='img/motos/yamaha-fz16.jpg') }}" class="card-img-top" alt="Yamaha R9">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Yamaha YZ-16</h5>
+            <ul class="list-unstyled ficha-tecnica">
+              <li><span>Cilindraje:</span>  153 cc</li>
+              <li><span>Potencia:</span> 14 HP</li>
+              <li><span>Peso:</span> 134 kg</li>
+              <li><span>Velocidad Máx:</span> 112 km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+
+
+</section>
+
+
 
     <div class="text-center mt-5">
       <a href="../marcas" class="btn btn-outline-primary">
         <i class="bi bi-arrow-left"></i> Volver a ver Marcas
       </a>
     </div>
-  </div>
-</section>
+
+<style>
+.moto-card {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.moto-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.moto-img-container {
+  overflow: hidden;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.moto-img-container img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.4s ease;
+}
+
+.moto-card:hover img {
+  transform: scale(1.05);
+}
+
+.ficha-tecnica li {
+  background: #f8f9fa;
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+</style>
+
+<script>
+  const cards = document.querySelectorAll('.moto-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  cards.forEach(card => observer.observe(card));
+</script>
 
 {% include 'sitio/pie.html' %}
