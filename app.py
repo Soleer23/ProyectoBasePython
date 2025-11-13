@@ -94,8 +94,8 @@ def modelos_public():
     return render_template('sitio/modelos.html', modelos=modelos)
 
 
-@app.route('/fichatecnica')
-def fichatecnica_public():
+@app.route('/historia')
+def historia_public():
     conn = mysql.connector.connect(**config)
     cursor = conn.cursor()
     cursor.execute("""
@@ -106,7 +106,7 @@ def fichatecnica_public():
     fichas = cursor.fetchall()
     cursor.close()
     conn.close()
-    return render_template('sitio/fichatecnica.html', fichas=fichas)
+    return render_template('sitio/historia.html', fichas=fichas)
 
 
 @app.route('/reseñas')

@@ -90,7 +90,7 @@
 
 
 <!--begin::Body-->
-<body class="layout-fixed sidebar-expand-lg sidebar-open bg-body-tertiary">
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
   <!--begin::App Wrapper-->
   <div class="app-wrapper">
     <!--begin::Header-->
@@ -255,34 +255,33 @@
           </li>
           <!--end::Fullscreen Toggle-->
 
-          <!--begin::User Menu Dropdown-->
-          <li class="nav-item dropdown user-menu">
-            <a
-              href="#"
-              class="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-            >
-              <img
-                src="{{ url_for('static', filename='/img/senaremove.png') }}"
-                class="user-image rounded-circle shadow"
-                alt="User Image"
-              />
-              <span class="d-none d-md-inline">SENA GRUPO</span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-              <!--begin::User Image-->
-              <li class="user-header text-bg-dark">
-                <img
-                  src="{{ url_for('static', filename='/img/senaremove.png') }}"
-                  class="rounded-circle shadow"
-                  alt="User Image"
-                />
-                <p>
-                  GRUPO SENA - PROGRAMACION
-                  <small>LUIS PEÑA, ALEJANDRO SOLER, ESREFANY MORENO Y SEBASTIAN PEÑA</small>
-                </p>
-              </li>
-              <!--end::User Image-->
+<li class="nav-item dropdown user-menu">
+  <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
+    <img
+      src="{{ url_for('static', filename='/img/senaremove.png') }}"
+      class="user-image rounded-circle shadow user-icon"
+      alt="User Image"
+    />
+    <span class="d-none d-md-inline text-white ms-2 fw-semibold">SENA GRUPO</span>
+  </a>
+
+  <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end user-dropdown shadow-lg">
+    <li class="user-header text-center">
+      <div class="user-header-bg"></div>
+      <img
+        src="{{ url_for('static', filename='/img/senaremove.png') }}"
+        class="rounded-circle shadow-lg user-avatar"
+        alt="User Image"
+      />
+      <p class="mt-2 mb-1 text-gold fw-bold">GRUPO SENA - PROGRAMACIÓN</p>
+      <small class="text-light small-text">
+        LUIS PEÑA · ALEJANDRO SOLER · ESREFANY MORENO · SEBASTIAN PEÑA
+      </small>
+    </li>
+  </ul>
+</li>
+<!--end::User Menu Dropdown-->
+
               <!--begin::Menu Body-->
 
               <!--end::Menu Body-->
@@ -398,36 +397,24 @@
     </aside>
     <!--end::Sidebar-->
     <!--begin::App Main-->
-    <main class="app-main">
-      <!--begin::App Content Header-->
-      <div class="app-content-header">
-        <!--begin::Container-->
-        <div class="container-fluid">
-          <!--begin::Row-->
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="card shadow-sm border-0 rounded-3" style="background: #f8f9fa; padding: 20px;">
-                <h3 class="mb-0 text-primary fw-bold">Administradores L.A.S.S</h3>
-                <p class="text-muted mt-2 mb-0">Gestión y supervisión general del sistema.</p>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-end">
-                <li class="breadcrumb-item"><a href="../admin">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">
-                <li class=""><a href="../admin/loginAdmin">Cerrar Sesion</a></li>
-                </li>
-                
-                <main id="main" class="">
-              </ol>
+<!--begin::App Main-->
+<main class="app-main">
+  <div class="app-content">
+    
+    <!-- 🔹 CABECERA -->
+    <div class="app-content-header modern-header py-3">
+      <div class="container-fluid">
+        <div class="row align-items-center justify-content-between">
+          
+          <!-- Título y descripción -->
+          <div class="col-md-7">
+            <div class="admin-info-box">
+              <h3 class="admin-title text-dark">
+                Administradores <span class="highlight text-warning  ">L.A.S.S</span>
+              </h3>
+              <p class="admin-subtitle text-secondary mb-0">
+                Gestión y supervisión general del sistema.
+              </p>
             </div>
           </div>
-          <!--end::Row-->
-        </div>
-        <!--end::Container-->
-      </div>
-      <!--end::App Content Header-->
-
-<div class="container">
-  <br/>
 

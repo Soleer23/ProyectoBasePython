@@ -1,48 +1,34 @@
 {% include 'admin/cabecera2.html' %}
 
-<!-- Recuadro elegante de Accesos directos -->
+<!-- ENCABEZADO -->
 <div class="row justify-content-center mb-4">
   <div class="col-md-6">
-    <div class="card shadow-sm border-0 bg-light">
-      <div class="card-body text-center p-3">
-        <h5 class="mb-0 text-dark">
-          <i class="bi-speedometer me-2 text-primary"></i> Categorias
-        </h5>
-      </div>
+    <div class="card shadow-sm border border-warning bg-dark text-center p-3">
+      <h5 class="mb-0 text-light fw-bold">
+        <i class="bi bi-speedometer2 me-2 text-warning"></i> GESTIÓN DE MOTOS
+      </h5>
     </div>
   </div>
 </div>
 
-<!-- Estilo opcional para un efecto más elegante -->
-<style>
-  .card.bg-light {
-    border-radius: 12px;
-    transition: all 0.3s ease;
-  }
-  .card.bg-light:hover {
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-3px);
-  }
-</style>
-
-
-
-
+<!-- CONTENIDO PRINCIPAL -->
 <div class="container mt-4">
-  <div class="row">
+  <div class="row g-4">
     <!-- FORMULARIO -->
     <div class="col-md-4">
-      <div class="card shadow-sm">
-        <div class="card-header bg-light">
-          <h5 class="mb-0">Datos de las Motos</h5>
+      <div class="card bg-dark text-light shadow border-0 rounded-4">
+        <div class="card-header bg-dark border-bottom border-warning">
+          <h5 class="mb-0 text-warning fw-bold">
+            <i class="bi bi-pencil-square me-2"></i> Datos de la Moto
+          </h5>
         </div>
         <div class="card-body">
           <form action="/admin/MotosAdmin/guardar" method="POST">
             <div class="mb-3">
-              <label for="num_serie" class="form-label">Número de serie:</label>
+              <label for="num_serie" class="form-label text-light">Número de Serie:</label>
               <input
                 type="text"
-                class="form-control"
+                class="form-control bg-secondary text-light border-0 border-bottom border-warning"
                 id="num_serie"
                 name="num_serie"
                 placeholder="Ingrese el número de serie"
@@ -51,10 +37,10 @@
             </div>
 
             <div class="mb-3">
-              <label for="nom_moto" class="form-label">Nombre de la Moto:</label>
+              <label for="nom_moto" class="form-label text-light">Nombre de la Moto:</label>
               <input
                 type="text"
-                class="form-control"
+                class="form-control bg-secondary text-light border-0 border-bottom border-warning"
                 id="nom_moto"
                 name="nom_moto"
                 placeholder="Ingrese el nombre de la moto"
@@ -62,94 +48,103 @@
               />
             </div>
 
-
-
             <div class="mb-3">
-              <label for="id_ficha" class="form-label">ID Ficha tecnica:</label>
+              <label for="id_ficha" class="form-label text-light">ID Ficha Técnica:</label>
               <select
                 name="id_ficha"
                 id="id_ficha"
-                class="form-control"
+                class="form-select bg-secondary text-light border-0 border-bottom border-warning"
                 required
               >
-                {% for 	ficha in ficha_tecnica %}
                 <option value="" hidden>Seleccione</option>
-                <option value="{{ ficha[0] }}">
-                  {{ficha[0]}} - {{ficha[1]}}
-                </option>
+                {% for ficha in ficha_tecnica %}
+                <option value="{{ ficha[0] }}">{{ ficha[0] }} - {{ ficha[1] }}</option>
                 {% endfor %}
               </select>
             </div>
 
             <div class="mb-3">
-              <label for="id_usuario" class="form-label">ID Usuario:</label>
+              <label for="id_usuario" class="form-label text-light">ID Usuario:</label>
               <select
                 name="id_usuario"
                 id="id_usuario"
-                class="form-control"
+                class="form-select bg-secondary text-light border-0 border-bottom border-warning"
                 required
               >
-                {% for usuario in usuarios %}
                 <option value="" hidden>Seleccione</option>
-                <option value="{{ usuario[0] }}">
-                  {{usuario[0]}} - {{usuario[1]}}
-                </option>
+                {% for usuario in usuarios %}
+                <option value="{{ usuario[0] }}">{{ usuario[0] }} - {{ usuario[1] }}</option>
                 {% endfor %}
               </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">Agregar</button>
+            <button type="submit" class="btn btn-warning text-dark fw-bold w-100">
+              <i class="bi bi-plus-circle me-1"></i> Agregar Moto
+            </button>
           </form>
         </div>
-        <div class="card-footer text-center text-muted">Footer</div>
       </div>
     </div>
 
     <!-- TABLA -->
     <div class="col-md-8">
-      <table class="table table-bordered table-hover shadow-sm">
-        <thead class="table-light">
-          <tr>
-            <th>ID Moto</th>
-            <th>Numero de serie</th>
-            <th>Nombre Moto</th>
-            <th>ID Ficha</th>
-            <th>ID Usuario </th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for moto in motos %}
-          <tr>
-            <td>{{ moto[0] }}</td>
-            <td>{{ moto[1] }}</td>
-            <td>{{ moto[2] }}</td>
-            <td>{{ moto[3] }}</td>
-            <td>{{ moto[4] }}</td>
-            <td>{{ moto[5] }}</td>
-            <td>
-              <form
-                action="/admin/MotosAdmin/borar
-                method="POST"
-                style="display: inline-block"
-              >
-                <input
-                  type="hidden"
-                  id="id_motos"
-                  name="id_motos"
-                  value="{{ mootos[0]  }}"
-                />
-                <button type="submit" class="btn btn-danger btn-sm">
-                  Eliminar
-                </button>
-              </form>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+      <div class="card bg-dark text-light shadow border-0 rounded-4">
+        <div class="card-header bg-dark border-bottom border-warning">
+          <h5 class="mb-0 text-warning fw-bold">
+            <i class="bi bi-list-ul me-2"></i> Lista de Motos
+          </h5>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-bordered table-hover align-middle m-0">
+            <thead class="table-warning text-dark text-center">
+              <tr>
+                <th>ID Moto</th>
+                <th>Número Serie</th>
+                <th>Nombre Moto</th>
+                <th>ID Ficha Técnica</th>
+                <th>ID Usuario</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for moto in motos %}
+              <tr class="text-center text-light">
+                <td class="border-warning">{{ moto[0] }}</td>
+                <td class="border-warning">{{ moto[1] }}</td>
+                <td class="border-warning">{{ moto[2] }}</td>
+                <td class="border-warning">{{ moto[3] }}</td>
+                <td class="border-warning">{{ moto[4] }}</td>
+                <td class="border-warning">
+                  <form action="/admin/MotosAdmin/borrar" method="POST" class="d-inline">
+                    <input type="hidden" id="id_motos" name="id_motos" value="{{ moto[0] }}" />
+                    <button type="submit" class="btn btn-danger btn-sm fw-bold">
+                      <i class="bi bi-trash3"></i> Eliminar
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- SweetAlert para mensajes -->
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for mensaje in messages %}
+      <script>
+        Swal.fire({
+          title: "Notificación",
+          text: "{{ mensaje }}",
+          icon: "{{ 'success' if 'Ingresado' in mensaje else 'error' }}"
+        });
+      </script>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 
 {% include 'admin/pieAdmin.html' %}

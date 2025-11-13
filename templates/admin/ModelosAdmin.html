@@ -1,142 +1,179 @@
-
 {% include 'admin/cabecera2.html' %}
 
-
-<!-- Recuadro elegante de Accesos directos -->
+<!-- ENCABEZADO -->
 <div class="row justify-content-center mb-4">
   <div class="col-md-6">
-    <div class="card shadow-sm border-0 bg-light">
-      <div class="card-body text-center p-3">
-        <h5 class="mb-0 text-dark">
-          <i class="bi bi-bag me-2 text-primary"></i> Modelos
-        </h5>
-      </div>
+    <div class="card shadow-sm border-0 bg-dark text-center p-3 border border-warning">
+      <h5 class="mb-0 text-light fw-bold">
+        <i class="bi bi-bag me-2 text-warning"></i> GESTIÓN DE MODELOS
+      </h5>
     </div>
   </div>
 </div>
 
-<!-- Estilo opcional para un efecto más elegante -->
-<style>
-  .card.bg-light {
-    border-radius: 12px;
-    transition: all 0.3s ease;
-  }
-  .card.bg-light:hover {
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-3px);
-  }
-</style>
-
-
-
+<!-- CONTENIDO -->
 <div class="container mt-4">
-  <div class="row">
+  <div class="row g-4">
     <!-- FORMULARIO -->
     <div class="col-md-4">
-      <div class="card shadow-sm">
-        <div class="card-header bg-light">
-          <h5 class="mb-0">Datos del Modelo</h5>
+      <div class="card bg-dark text-light shadow border-0 rounded-4">
+        <div class="card-header bg-dark border-bottom border-warning">
+          <h5 class="mb-0 text-warning fw-bold">
+            <i class="bi bi-pencil-square me-2"></i> Datos del Modelo
+          </h5>
         </div>
         <div class="card-body">
           <form action="/admin/ModelosAdmin/guardar" method="POST">
 
-
             <div class="mb-3">
-              <label for="num_modelo" class="form-label">Número Modelo:</label>
-              <input type="text" class="form-control" id="num_modelo"   name="num_modelo" placeholder="Ingrese el número del modelo"
-                required />
+              <label for="num_modelo" class="form-label text-light">Número del Modelo:</label>
+              <input
+                type="text"
+                class="form-control bg-secondary text-light border-0 border-bottom border-warning"
+                id="num_modelo"
+                name="num_modelo"
+                placeholder="Ingrese el número del modelo"
+                required
+              />
             </div>
 
             <div class="mb-3">
-              <label for="marca" class="form-label">Nombre Marca:</label>
-              <input type="text" class="form-control" id="marca" name="marca" placeholder="Ingrese el nombre de la marca"
-                required />
-            </div>
-
-            <div class="mb-3"> 
-              <label for="categoria" class="form-label">Nombre Categoría:</label>
-              <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Ingrese el nombre de la categoría"
-                required />
-            </div>
-
-            <div class="mb-3">
-              <label for="anio_lanzamiento" class="form-label">Año de lanzamiento:</label>
-              <input type="number" class="form-control" id="anio_lanzamiento" name="anio_lanzamiento" placeholder="Ingrese el nombre de la categoría"
-                required />
+              <label for="marca" class="form-label text-light">Nombre de la Marca:</label>
+              <input
+                type="text"
+                class="form-control bg-secondary text-light border-0 border-bottom border-warning"
+                id="marca"
+                name="marca"
+                placeholder="Ingrese el nombre de la marca"
+                required
+              />
             </div>
 
             <div class="mb-3">
-              <label for="id_marca" class="form-label">ID Marca:</label>
-              <select name="id_marca" id="id_marca" class="form-control" required>              
+              <label for="categoria" class="form-label text-light">Nombre de la Categoría:</label>
+              <input
+                type="text"
+                class="form-control bg-secondary text-light border-0 border-bottom border-warning"
+                id="categoria"
+                name="categoria"
+                placeholder="Ingrese el nombre de la categoría"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="anio_lanzamiento" class="form-label text-light">Año de Lanzamiento:</label>
+              <input
+                type="number"
+                class="form-control bg-secondary text-light border-0 border-bottom border-warning"
+                id="anio_lanzamiento"
+                name="anio_lanzamiento"
+                placeholder="Ingrese el año de lanzamiento"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="id_marca" class="form-label text-light">ID Marca:</label>
+              <select
+                name="id_marca"
+                id="id_marca"
+                class="form-select bg-secondary text-light border-0 border-bottom border-warning"
+                required
+              >
+                <option value="" hidden>Seleccione</option>
                 {% for marca in marcas %}
-                <option value="" hidden>Seleccione</option>
-                <option value="{{ marca[0] }}">{{marca[0]}} - {{marca[1]}} </option>
-                {% endfor %}              
-              </select>
-            </div>
-
-
-
-            <div class="mb-3">
-              <label for="id_categoria" class="form-label">ID Categoría:</label>
-              <select name="id_categoria" id="id_categoria" class="form-control" required>
-                {% for categoria in categorias %}
-                <option value="" hidden>Seleccione</option>
-                <option value="{{ categoria[0] }}">{{categoria[0]}} - {{categoria[1]}} </option>
+                <option value="{{ marca[0] }}">{{ marca[0] }} - {{ marca[1] }}</option>
                 {% endfor %}
               </select>
             </div>
 
+            <div class="mb-3">
+              <label for="id_categoria" class="form-label text-light">ID Categoría:</label>
+              <select
+                name="id_categoria"
+                id="id_categoria"
+                class="form-select bg-secondary text-light border-0 border-bottom border-warning"
+                required
+              >
+                <option value="" hidden>Seleccione</option>
+                {% for categoria in categorias %}
+                <option value="{{ categoria[0] }}">{{ categoria[0] }} - {{ categoria[1] }}</option>
+                {% endfor %}
+              </select>
+            </div>
 
-
-            <button type="submit" class="btn btn-primary">Agregar</button>
+            <button type="submit" class="btn btn-warning text-dark fw-bold w-100">
+              <i class="bi bi-plus-circle me-1"></i> Agregar Modelo
+            </button>
           </form>
-        </div>
-        <div class="card-footer text-center text-muted">
-          Footer
         </div>
       </div>
     </div>
 
     <!-- TABLA -->
     <div class="col-md-8">
-      <table class="table table-bordered table-hover shadow-sm">
-        <thead class="table-light">
-          <tr>
-            <th>ID Modelo</th>
-            <th>Número Modelo</th>
-            <th>Nombre Marca</th>
-            <th>Nombre Categoría</th>
-            <th>Año de lanzamiento</th>
-            <th>ID Marca</th>
-            <th>ID Categoría</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for modelo in modelos %}
-          <tr>
-            <td>{{ modelo[0]  }}</td>
-            <td>{{ modelo[1]  }}</td>
-            <td>{{ modelo[2]  }}</td>
-            <td>{{ modelo[3]  }}</td>
-            <td>{{ modelo[4]  }}</td>
-            <td>{{ modelo[5]  }}</td>
-            <td>{{ modelo[6]  }}</td>
-            <td>
-              <form action="/admin/ModelosAdmin/borrar" method="POST" style="display:inline-block;">
-                <input type="hidden" id="id_modelo" name="id_modelo" value="{{ modelo[0]  }}">
-                <button type="submit" class="btn btn-danger btn-sm">
-                  Eliminar
-                </button>
-              </form>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+      <div class="card bg-dark text-light shadow border-0 rounded-4">
+        <div class="card-header bg-dark border-bottom border-warning">
+          <h5 class="mb-0 text-warning fw-bold">
+            <i class="bi bi-list-ul me-2"></i> Lista de Modelos
+          </h5>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-bordered table-hover align-middle m-0">
+            <thead class="table-warning text-dark text-center">
+              <tr>
+                <th>ID Modelo</th>
+                <th>Número Modelo</th>
+                <th>Nombre Marca</th>
+                <th>Nombre Categoría</th>
+                <th>Año</th>
+                <th>ID Marca</th>
+                <th>ID Categoría</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for modelo in modelos %}
+              <tr class="text-center text-light">
+                <td class="border-warning">{{ modelo[0] }}</td>
+                <td class="border-warning">{{ modelo[1] }}</td>
+                <td class="border-warning">{{ modelo[2] }}</td>
+                <td class="border-warning">{{ modelo[3] }}</td>
+                <td class="border-warning">{{ modelo[4] }}</td>
+                <td class="border-warning">{{ modelo[5] }}</td>
+                <td class="border-warning">{{ modelo[6] }}</td>
+                <td class="border-warning">
+                  <form action="/admin/ModelosAdmin/borrar" method="POST" class="d-inline">
+                    <input type="hidden" name="id_modelo" value="{{ modelo[0] }}">
+                    <button type="submit" class="btn btn-danger btn-sm fw-bold">
+                      <i class="bi bi-trash3"></i> Eliminar
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- SweetAlert mensajes -->
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for mensaje in messages %}
+      <script>
+        Swal.fire({
+          title: "Notificación",
+          text: "{{ mensaje }}",
+          icon: "{{ 'success' if 'Ingresado' in mensaje else 'error' }}"
+        });
+      </script>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 
 {% include 'admin/pieAdmin.html' %}

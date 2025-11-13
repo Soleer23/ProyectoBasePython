@@ -1,180 +1,179 @@
-
 {% include 'admin/cabecera2.html' %}
 
-
-<!-- Recuadro elegante de Accesos directos -->
+<!-- ENCABEZADO -->
 <div class="row justify-content-center mb-4">
   <div class="col-md-6">
-    <div class="card shadow-sm border-0 bg-light">
-      <div class="card-body text-center p-3">
-        <h5 class="mb-0 text-dark">
-          <i class="bi bi-collection me-2 text-primary"></i> Fichas Tecnicas
-        </h5>
-      </div>
+    <div class="card shadow-sm border border-warning bg-dark text-center p-3">
+      <h5 class="mb-0 text-light fw-bold">
+        <i class="bi bi-collection me-2 text-warning"></i> FICHAS TÉCNICAS
+      </h5>
     </div>
   </div>
 </div>
 
-<!-- Estilo opcional para un efecto más elegante -->
-<style>
-  .card.bg-light {
-    border-radius: 12px;
-    transition: all 0.3s ease;
-  }
-  .card.bg-light:hover {
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-3px);
-  }
-</style>
-
-
+<!-- CONTENIDO PRINCIPAL -->
 <div class="container mt-4">
-  <div class="row">
+  <div class="row g-4">
     <!-- FORMULARIO -->
-    <div class="col-md-4">
-      <div class="card shadow-sm">
-        <div class="card-header bg-light">
-          <h5 class="mb-0">Datos de las Fichas Tecnicas</h5>
+    <div class="col-md-5">
+      <div class="card bg-dark text-light shadow border-0 rounded-4">
+        <div class="card-header bg-dark border-bottom border-warning">
+          <h5 class="mb-0 text-warning fw-bold">
+            <i class="bi bi-pencil-square me-2"></i> Datos de la Ficha Técnica
+          </h5>
         </div>
         <div class="card-body">
           <form action="/admin/FichaTecAdmin/guardar" method="POST">
-
-
+            
             <div class="mb-3">
-              <label for="modelo" class="form-label">Número Modelo:</label>
-              <input type="number" class="form-control" id="modelo"   name="modelo" placeholder="Ingrese el número del modelo"
-                required />
+              <label for="modelo" class="form-label">Número de Modelo:</label>
+              <input type="number" class="form-control bg-secondary text-light border-0 border-bottom border-warning" 
+                     id="modelo" name="modelo" placeholder="Ingrese el número del modelo" required>
             </div>
 
             <div class="mb-3">
-              <label for="marca" class="form-label">Nombre Marca:</label>
-              <input type="text" class="form-control" id="marca" name="marca" placeholder="Ingrese el nombre de la marca"
-                required />
+              <label for="marca" class="form-label">Nombre de la Marca:</label>
+              <input type="text" class="form-control bg-secondary text-light border-0 border-bottom border-warning" 
+                     id="marca" name="marca" placeholder="Ingrese el nombre de la marca" required>
             </div>
 
-            <div class="mb-3"> 
+            <div class="mb-3">
               <label for="motor" class="form-label">Motor:</label>
-              <input type="text" class="form-control" id="motor" name="motor" placeholder="Ingrese el motor"
-                required />
+              <input type="text" class="form-control bg-secondary text-light border-0 border-bottom border-warning" 
+                     id="motor" name="motor" placeholder="Ingrese el tipo de motor" required>
             </div>
 
             <div class="mb-3">
-                <label for="id_tipo" class="form-label">ID Tipo de motor:</label>
-              <select name="id_tipo" id="	id_tipo" class="form-control" required>
-                {% for tipomotor in tipos_motor %}
+              <label for="id_tipo" class="form-label">Tipo de Motor:</label>
+              <select name="id_tipo" id="id_tipo" class="form-control bg-secondary text-light border-0 border-bottom border-warning" required>
                 <option value="" hidden>Seleccione</option>
-                <option value="{{ tipomotor[0] }}">{{tipomotor[0]}} - {{tipomotor[1]}} </option>
+                {% for tipomotor in tipos_motor %}
+                <option value="{{ tipomotor[0] }}">{{ tipomotor[0] }} - {{ tipomotor[1] }}</option>
                 {% endfor %}
               </select>
             </div>
 
-
             <div class="mb-3">
-              <label for="cilindraje" class="form-label">Cilindraje:</label>
-              <input type="number" class="form-control" id="cilindraje" name="cilindraje" placeholder="Ingrese el Cilindraje del motor"
-                required />
-            </div>
-            
-            <div class="mb-3">
-                <label for="potencia_hp" class="form-label">Potencia en HP:</label>
-                <input type="number" class="form-control" id="potencia_hp" name="potencia_hp" placeholder="Ingrese el nombre de la Potencia"
-                required />
+              <label for="cilindraje" class="form-label">Cilindraje (cc):</label>
+              <input type="number" class="form-control bg-secondary text-light border-0 border-bottom border-warning" 
+                     id="cilindraje" name="cilindraje" placeholder="Ingrese el cilindraje del motor" required>
             </div>
 
             <div class="mb-3">
-                <label for="torque_nm" class="form-label">Torque en NM:</label>
-                <input type="number" class="form-control" id="torque_nm" name="torque_nm" placeholder="Ingrese el nombre del Torque en NM (Deciamles)" step="any"
-                required />
-            </div>
-
-            <div class="mb-3"> 
-                <label for="transmision" class="form-label">Transmision:</label>
-                <input type="text" class="form-control" id="transmision" name="transmision" placeholder="Ingrese la transmision"
-                required />
-            </div>
-
-
-            <div class="mb-3"> 
-                <label for="cap_combustible" class="form-label">Capacidad de combustible:</label>
-                <input type="text" class="form-control" id="cap_combustible" name="cap_combustible" placeholder="Ingrese la Capacidad de combustible"
-                required />
+              <label for="potencia_hp" class="form-label">Potencia (HP):</label>
+              <input type="number" class="form-control bg-secondary text-light border-0 border-bottom border-warning" 
+                     id="potencia_hp" name="potencia_hp" placeholder="Ingrese la potencia del motor" required>
             </div>
 
             <div class="mb-3">
-                <label for="peso_kg" class="form-label">Peso en Kg:</label>
-                <input type="number" class="form-control" id="peso_kg" name="peso_kg" placeholder="Ingrese el peso en Kg (Deciamles)" step="any"
-                required />
+              <label for="torque_nm" class="form-label">Torque (Nm):</label>
+              <input type="number" step="any" class="form-control bg-secondary text-light border-0 border-bottom border-warning" 
+                     id="torque_nm" name="torque_nm" placeholder="Ingrese el torque del motor" required>
             </div>
 
             <div class="mb-3">
-                <label for="velocidad_max_kmh" class="form-label">Velocidad Maxima kmh:</label>
-                <input type="number" class="form-control" id="velocidad_max_kmh" name="velocidad_max_kmh" placeholder="Ingrese el nombre de la Potencia"
-                required />
+              <label for="transmision" class="form-label">Transmisión:</label>
+              <input type="text" class="form-control bg-secondary text-light border-0 border-bottom border-warning" 
+                     id="transmision" name="transmision" placeholder="Ingrese el tipo de transmisión" required>
             </div>
 
+            <div class="mb-3">
+              <label for="cap_combustible" class="form-label">Capacidad de Combustible (L):</label>
+              <input type="text" class="form-control bg-secondary text-light border-0 border-bottom border-warning" 
+                     id="cap_combustible" name="cap_combustible" placeholder="Ingrese la capacidad del tanque" required>
+            </div>
 
             <div class="mb-3">
-              <label for="id_modelo" class="form-label">ID Modelo:</label>
-              <select name="id_modelo" id="id_modelo" class="form-control" required>              
-                {% for modelo in modelos %}
+              <label for="peso_kg" class="form-label">Peso (kg):</label>
+              <input type="number" step="any" class="form-control bg-secondary text-light border-0 border-bottom border-warning" 
+                     id="peso_kg" name="peso_kg" placeholder="Ingrese el peso de la moto" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="velocidad_max_kmh" class="form-label">Velocidad Máxima (km/h):</label>
+              <input type="number" class="form-control bg-secondary text-light border-0 border-bottom border-warning" 
+                     id="velocidad_max_kmh" name="velocidad_max_kmh" placeholder="Ingrese la velocidad máxima" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="id_modelo" class="form-label">Modelo Asociado:</label>
+              <select name="id_modelo" id="id_modelo" class="form-control bg-secondary text-light border-0 border-bottom border-warning" required>
                 <option value="" hidden>Seleccione</option>
-                <option value="{{ modelo[0] }}">{{modelo[0]}} - {{modelo[1]}} </option>
-                {% endfor %}              
+                {% for modelo in modelos %}
+                <option value="{{ modelo[0] }}">{{ modelo[0] }} - {{ modelo[1] }}</option>
+                {% endfor %}
               </select>
             </div>
 
-
-
-
-
-            <button type="submit" class="btn btn-primary">Agregar</button>
+            <button type="submit" class="btn btn-warning text-dark fw-bold w-100 mt-3">
+              <i class="bi bi-plus-circle me-1"></i> Agregar Ficha Técnica
+            </button>
           </form>
-        </div>
-        <div class="card-footer text-center text-muted">
-          Footer
         </div>
       </div>
     </div>
 
     <!-- TABLA -->
-    <div class="col-md-8">
-      <table class="table table-bordered table-hover shadow-sm">
-        <thead class="table-light">
-          <tr>
-            <th>ID Modelo</th>
-            <th>Número Modelo</th>
-            <th>Nombre Marca</th>
-            <th>Nombre Categoría</th>
-            <th>Año de lanzamiento</th>
-            <th>ID Marca</th>
-            <th>ID Categoría</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for modelo in modelos %}
-          <tr>
-            <td>{{ modelo[0]  }}</td>
-            <td>{{ modelo[1]  }}</td>
-            <td>{{ modelo[2]  }}</td>
-            <td>{{ modelo[3]  }}</td>
-            <td>{{ modelo[4]  }}</td>
-            <td>{{ modelo[5]  }}</td>
-            <td>{{ modelo[6]  }}</td>
-            <td>
-              <form action="/admin/FichaTecAdmin/borrar" method="POST" style="display:inline-block;">
-                <input type="hidden" id="id_modelo" name="id_modelo" value="{{ modelo[0]  }}">
-                <button type="submit" class="btn btn-danger btn-sm">
-                Eliminar
-                </button>
-              </form>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+    <div class="col-md-7">
+      <div class="card bg-dark text-light shadow border-0 rounded-4">
+        <div class="card-header bg-dark border-bottom border-warning">
+          <h5 class="mb-0 text-warning fw-bold">
+            <i class="bi bi-list-ul me-2"></i> Fichas Técnicas Registradas
+          </h5>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-bordered table-hover align-middle m-0">
+            <thead class="table-warning text-dark text-center">
+              <tr>
+                <th>ID</th>
+                <th>Modelo</th>
+                <th>Motor</th>
+                <th>Cilindraje</th>
+                <th>Potencia (HP)</th>
+                <th>Torque (Nm)</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for ficha in fichas %}
+              <tr class="text-center text-light">
+                <td class="border-warning">{{ ficha[0] }}</td>
+                <td class="border-warning">{{ ficha[1] }}</td>
+                <td class="border-warning">{{ ficha[3] }}</td>
+                <td class="border-warning">{{ ficha[5] }}</td>
+                <td class="border-warning">{{ ficha[6] }}</td>
+                <td class="border-warning">{{ ficha[7] }}</td>
+                <td class="border-warning">
+                  <form action="/admin/FichaTecAdmin/borrar" method="POST" class="d-inline">
+                    <input type="hidden" name="id_ficha" value="{{ ficha[0] }}">
+                    <button type="submit" class="btn btn-danger btn-sm fw-bold">
+                      <i class="bi bi-trash3"></i> Eliminar
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- ALERTAS -->
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for mensaje in messages %}
+      <script>
+        Swal.fire({
+          title: "Notificación",
+          text: "{{ mensaje }}",
+          icon: "{{ 'success' if 'Ingresado' in mensaje else 'error' }}"
+        });
+      </script>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 
 {% include 'admin/pieAdmin.html' %}

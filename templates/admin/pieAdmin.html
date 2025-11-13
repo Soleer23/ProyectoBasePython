@@ -14,6 +14,55 @@
 
 <!-- fin container -->
 </div>
+<!-- JS: Bootstrap + Popper -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
+
+<!-- AdminLTE -->
+<script src="{{ url_for('static', filename='js/adminlte.js') }}"></script>
+
+<!-- Forzar inicialización del dropdown -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const triggers = document.querySelectorAll('[data-bs-toggle="dropdown"]');
+  triggers.forEach(el => new bootstrap.Dropdown(el));
+});
+</script>
+<style>
+  /* Estilo de tabla oscura estilo AdminLTE */
+  table.table {
+    background-color: #343a40 !important; /* gris oscuro */
+    color: #fff !important; /* texto blanco */
+    border-color: #ffc107 !important; /* bordes dorados */
+  }
+
+  table.table thead {
+    background-color: #212529 !important; /* encabezado un poco más oscuro */
+    color: #fff !important;
+  }
+
+  table.table tbody tr {
+    background-color: #343a40 !important;
+  }
+
+  table.table tbody tr:hover {
+    background-color: #495057 !important; /* gris más claro al pasar el mouse */
+  }
+
+  table.table td, 
+  table.table th {
+    vertical-align: middle;
+  }
+
+  .btn-danger {
+    background-color: #dc3545 !important;
+    border: none;
+  }
+  .btn-danger:hover {
+    background-color: #c82333 !important;
+  }
+</style>
+
 </body>
 
 </html>

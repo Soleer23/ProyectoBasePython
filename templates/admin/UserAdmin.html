@@ -1,156 +1,105 @@
-{% include 'admin/cabecera2.html' %}
+      {% include 'admin/cabecera2.html' %}
 
-<!-- Recuadro elegante de Accesos directos -->
-<div class="row justify-content-center mb-4">
-  <div class="col-md-6">
-    <div class="card shadow-sm border-0 bg-light">
-      <div class="card-body text-center p-3">
-        <h5 class="mb-0 text-dark">
-          <i class="bi bi-person me-2 text-primary"></i> Usuarios
-        </h5>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Estilo opcional para un efecto más elegante -->
-<style>
-  .card.bg-light {
-    border-radius: 12px;
-    transition: all 0.3s ease;
-  }
-  .card.bg-light:hover {
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-3px);
-  }
-</style>
-
-
-<div class="container mt-4">
-  <div class="row">
-    <!-- FORMULARIO -->
-    <div class="col-md-4">
-      <div class="card shadow-sm">
-        <div class="card-header bg-light">
-          <h5 class="mb-0">Datos de los Usuarios</h5>
+        <div class="row justify-content-center mb-4">
+          <div class="col-md-6">
+            <div class="card border-0 bg-dark text-light shadow-sm">
+              <div class="card-body text-center p-3">
+                <h5 class="mb-0 fw-semibold text-uppercase">
+                  <i class="bi bi-people-fill me-2 text-warning"></i> Gestión de Usuarios
+                </h5>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-          <form action="/admin/UserAdmin/guardar" method="POST">
-            <div class="mb-3">
-              <label for="nom_user" class="form-label">Nombre de Usuario:</label>
-              <input
-                type="text"
-                class="form-control"
-                id="nom_user"
-                name="nom_user"
-                placeholder="Ingrese el nombre de usuario"
-                required
-              />
-            </div>
 
-            <div class="mb-3">
-              <label for="email" class="form-label">Apellido:</label>
-              <input
-                type="ape_user"
-                class="form-control"
-                id="ape_user"
-                name="ape_user"
-                placeholder="Ingrese el Apellido"
-                required
-              />
-            </div>
+        <div class="row g-4">
+          <!-- Formulario -->
+          <div class="col-md-4">
+            <div class="card shadow-lg border-0 bg-dark text-light rounded-4">
+              <div class="card-header bg-secondary text-light rounded-top">
+                <h5 class="mb-0 fw-bold">
+                  <i class="bi bi-person-plus me-2 text-warning"></i> Datos del Usuario
+                </h5>
+              </div>
+              <div class="card-body">
+                <form action="/admin/UserAdmin/guardar" method="POST">
+                  <div class="mb-3">
+                    <label for="nom_user" class="form-label fw-semibold text-light">Nombre:</label>
+                    <input type="text" class="form-control border-warning bg-dark text-light"
+                      id="nom_user" name="nom_user" placeholder="Ingrese el nombre" required />
+                  </div>
 
-            <div class="mb-3">
-              <label for="email_user" class="form-label">Emai:</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email_user"
-                name="email_user"
-                placeholder="Ingrese el correo electrónico"
-                required
-              />
-            </div>
-            <input type="submit" class="btn btn-primary" value="Guardar Usuario" />
-          </form>
-        </div>
-      </div>
-    </div>
+                  <div class="mb-3">
+                    <label for="ape_user" class="form-label fw-semibold text-light">Apellido:</label>
+                    <input type="text" class="form-control border-warning bg-dark text-light"
+                      id="ape_user" name="ape_user" placeholder="Ingrese el apellido" required />
+                  </div>
 
-        <!-- tabla de recepcion libros -->
-        <div class="col-md-8">
-            <table class="table table-bordered table-hover shadow-sm">
-                <thead class="table-light">
-                    <tr>
+                  <div class="mb-3">
+                    <label for="email_user" class="form-label fw-semibold text-light">Email:</label>
+                    <input type="email" class="form-control border-warning bg-dark text-light"
+                      id="email_user" name="email_user" placeholder="Ingrese el correo electrónico" required />
+                  </div>
+
+                  <div class="d-grid">
+                    <input type="submit" class="btn btn-warning text-dark fw-bold mt-2" value="Guardar Usuario" />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabla -->
+          <div class="col-md-8">
+            <div class="card shadow-lg border-0 bg-dark text-light rounded-4">
+              <div class="card-header bg-secondary text-light rounded-top">
+                <h5 class="mb-0 fw-bold">
+                  <i class="bi bi-table me-2 text-warning"></i> Lista de Usuarios
+                </h5>
+              </div>
+              <div class="card-body p-0">
+                <div class="table-responsive">
+                  <table class="table align-middle mb-0 custom-table">
+                    <thead>
+                      <tr class="text-warning border-warning">
                         <th scope="col">ID</th>
-                        <th scope="col">Nombre de Usuario</th>
+                        <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Fecha del registro</th>
-                        <th scope="col">Accion</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for usuario in listaUsuarios2 %}
-
-                    <tr>
+                        <th scope="col">Fecha Registro</th>
+                        <th scope="col">Acción</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for usuario in listaUsuarios2 %}
+                      <tr>
                         <td>{{ usuario[0] }}</td>
                         <td>{{ usuario[1] }}</td>
                         <td>{{ usuario[2] }}</td>
                         <td>{{ usuario[3] }}</td>
                         <td>{{ usuario[4] }}</td>
                         <td>
-                        <form action="/admin/UserAdmin/borrar" method="POST" style="display: inline-block;">
-                            <input type="hidden" name="id_usuario" id="id_usuario" value="{{ usuario[0] }}">
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                Eliminar</button>
-                        </form>
+                          <form action="/admin/UserAdmin/borrar" method="POST" style="display:inline-block;">
+                            <input type="hidden" name="id_usuario" value="{{ usuario[0] }}">
+                            <button type="submit" class="btn btn-sm btn-danger">
+                              <i class="bi bi-trash-fill"></i> Eliminar
+                            </button>
+                          </form>
                         </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-{% with messages = get_flashed_messages() %}
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
 
-{% if messages %}
+        </div> <!-- fin row usuarios -->
 
-{% for mensaje in messages %}
+      </div> <!-- fin container-fluid -->
+    </div> <!-- fin app-content-body -->
 
-{% if mensaje == "usuario Eliminado" %}
-<script>
-
-    Swal.fire({
-        title: "Muy Bien....!",
-        text: "{{mensaje}} ",
-        icon: "error"
-    });
-
-</script>
-{% elif mensaje == "Libro Ingresado Correctamente" %}
-
-<script>
-
-    Swal.fire({
-        title: "Muy Bien!",
-        text: "{{mensaje}} ",
-        icon: "success"
-    });
-
-</script>
-
-{% endif %}
-
-{% endfor %}
-
-
-{% endif %}
-{% endwith %}
-
-
-
-
-
-{% include 'admin/footer2.html' %}
+  </div> <!-- fin app-content -->
+</main>
+<!--end::App Main-->

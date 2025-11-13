@@ -1,84 +1,75 @@
 {% include 'admin/cabecera2.html' %}
 
-<!-- Recuadro elegante de Accesos directos -->
-<div class="row justify-content-center mb-4">
-  <div class="col-md-6">
-    <div class="card shadow-sm border-0 bg-light">
-      <div class="card-body text-center p-3">
-        <h5 class="mb-0 text-secondary">
-          <i class="fas fa-link me-2 text-primary"></i> Accesos directos
-        </h5>
-      </div>
-    </div>
-  </div>
-</div>
+<  <!-- 🔸 CONTENIDO PRINCIPAL -->
+    <div class="app-content-body p-4">
+      <div class="container-fluid">
 
-<!-- Estilo opcional para un efecto más elegante -->
-<style>
-  .card.bg-light {
-    border-radius: 12px;
-    transition: all 0.3s ease;
-  }
-  .card.bg-light:hover {
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-3px);
-  }
-</style>
-
-
-
-
-    <!-- 🟩 Sección de Bloques -->
-    <div class="row g-4">
-        <!-- Usuarios -->
-        <div class="col-md-3 col-sm-6">
-            <div class="card shadow-lg border-0 rounded-4 hover-scale text-center p-3">
-                <div class="card-body">
-                    <i class="fas fa-user fa-3x text-primary mb-3"></i>
-                    <h5 class="card-title">Usuarios</h5>
-                    <p class="card-text text-muted">Gestiona cuentas de usuarios</p>
-                    <a href="../UserAdmin" class="btn btn-primary btn-sm mt-2">Entrar</a>
-                </div>
+        <!-- Accesos Directos -->
+        <div class="row justify-content-center mb-4">
+          <div class="col-md-6">
+            <div class="card accesos-directos-card text-center bg-dark border-0 shadow-lg">
+              <div class="card-body p-3">
+                <h5 class="mb-0 text-white fw-semibold">
+                  <i class="fas fa-link me-2 text-warning"></i> Accesos directos
+                </h5>
+              </div>
             </div>
+          </div>
         </div>
 
-        <!-- Categorías -->
-        <div class="col-md-3 col-sm-6">
-            <div class="card shadow-lg border-0 rounded-4 hover-scale text-center p-3">
-                <div class="card-body">
-                    <i class="fas fa-tags fa-3x text-success mb-3"></i>
-                    <h5 class="card-title">Categorías</h5>
-                    <p class="card-text text-muted">Administra las categorías</p>
-                    <a href="../CategAdmin" class="btn btn-success btn-sm mt-2">Entrar</a>
-                </div>
+        <!-- 🔸 BLOQUES PRINCIPALES -->
+        <div class="row g-4">
+
+          <!-- Usuarios -->
+          <div class="col-md-3 col-sm-6">
+            <div class="card dashboard-card text-center bg-dark border-0 shadow-lg">
+              <div class="card-body">
+                <i class="fas fa-user fa-3x text-warning mb-3"></i>
+                <h5 class="card-title text-white">Usuarios</h5>
+                <p class="card-text text-light">Gestiona cuentas de usuarios</p>
+                <a href="../UserAdmin" class="btn btn-warning text-dark fw-bold">Entrar</a>
+              </div>
             </div>
+          </div>
+
+          <!-- Categorías -->
+          <div class="col-md-3 col-sm-6">
+            <div class="card dashboard-card text-center bg-dark border-0 shadow-lg">
+              <div class="card-body">
+                <i class="fas fa-tags fa-3x text-warning mb-3"></i>
+                <h5 class="card-title text-white">Categorías</h5>
+                <p class="card-text text-light">Administra las categorías</p>
+                <a href="../CategAdmin" class="btn btn-warning text-dark fw-bold">Entrar</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Marcas -->
+          <div class="col-md-3 col-sm-6">
+            <div class="card dashboard-card text-center bg-dark border-0 shadow-lg">
+              <div class="card-body">
+                <i class="fas fa-industry fa-3x text-warning mb-3"></i>
+                <h5 class="card-title text-white">Marcas</h5>
+                <p class="card-text text-light">Control de marcas registradas</p>
+                <a href="../MarcasAdmin" class="btn btn-warning text-dark fw-bold">Entrar</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Motos -->
+          <div class="col-md-3 col-sm-6">
+            <div class="card dashboard-card text-center bg-dark border-0 shadow-lg">
+              <div class="card-body">
+                <i class="fas fa-motorcycle fa-3x text-warning mb-3"></i>
+                <h5 class="card-title text-white">Motos</h5>
+                <p class="card-text text-light">Gestiona la base de datos</p>
+                <a href="/MotosAdmin" class="btn btn-warning text-dark fw-bold">Entrar</a>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Marcas -->
-        <div class="col-md-3 col-sm-6">
-            <div class="card shadow-lg border-0 rounded-4 hover-scale text-center p-3">
-                <div class="card-body">
-                    <i class="fas fa-industry fa-3x text-warning mb-3"></i>
-                    <h5 class="card-title">Marcas</h5>
-                    <p class="card-text text-muted">Control de marcas registradas</p>
-                    <a href="../MarcasAdmin" class="btn btn-warning btn-sm mt-2">Entrar</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Motos -->
-        <div class="col-md-3 col-sm-6">
-            <div class="card shadow-lg border-0 rounded-4 hover-scale text-center p-3">
-                <div class="card-body">
-                    <i class="fas fa-motorcycle fa-3x text-danger mb-3"></i>
-                    <h5 class="card-title">Motos</h5>
-                    <p class="card-text text-muted">Gestiona la base de datos</p>
-                    <a href="/MotosAdmin" class="btn btn-danger btn-sm mt-2">Entrar</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 {% include 'admin/footer2.html' %}

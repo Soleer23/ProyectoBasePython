@@ -1,71 +1,124 @@
 {% include 'sitio/cabecera.html' %}
 
-  <!-- HERO HEADER -->
-  <header class="container-fluid">
-    <div class="container">
-      <h1>BIENVENIDOS A MOTORIZED LOVE</h1>
-      <p>
-        Explora la historia, tecnología y rendimiento de las motocicletas más emblemáticas del mundo.
-        Sin ventas, solo información y pasión por las motos.
-      </p>
-    </div>
-  </header>
+<!-- HERO HEADER -->
+<header class="hero-header text-center py-5">
+  <div class="container">
+    <h1 class="fw-bold text-uppercase mb-3">Bienvenidos a Motorized Love</h1>
+    <p class="lead mb-4">
+      Explora la historia, tecnología y rendimiento de las motocicletas más emblemáticas del mundo.  
+      Un espacio dedicado a la pasión, la cultura y el conocimiento sobre el motociclismo.
+    </p>
+    <a href="{{ url_for('marcas') }}" class="btn btn-warning rounded-pill px-4 py-2 fw-semibold">
+      Explorar Marcas
+    </a>
+  </div>
+</header>
 
-
-
-
-
-
-
-
-<main class="container my-5">
-
-
-  <hr>
-
-  <!-- Tarjetas de motos -->
-  <div class="row g-4 mt-4">
-    <div class="col-md-4">
-      <div class="card shadow-sm border-0">
-        <img src="{{ url_for('static', filename='/img/YAMAHA YZF-R6.jpg') }}" 
-             class="card-img-top" alt="Yamaha R6">
-        <div class="card-body">
-          <h5 class="fw-bold text-primary">Yamaha YZF-R6</h5>
-          <p class="text-muted small">Cilindraje: 600cc | Potencia: 120HP | Peso: 190kg</p>
-          <a href="#" class="btn btn-outline-primary btn-sm">Ver más</a>
-        </div>
+<!-- SECCIÓN DE INTRODUCCIÓN -->
+<section class="py-5 bg-light text-dark">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="/static/assets/motosgpt.png" alt="Motocicletas" class="img-fluid rounded shadow">
       </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card shadow-sm border-0">
-        <img src="https://cdn.pixabay.com/photo/2016/11/29/12/53/motorbike-1867036_1280.jpg" 
-             class="card-img-top" alt="Honda CBR">
-        <div class="card-body">
-          <h5 class="fw-bold text-primary">Honda CBR600RR</h5>
-          <p class="text-muted small">Cilindraje: 599cc | Potencia: 118HP | Peso: 186kg</p>
-          <a href="#" class="btn btn-outline-primary btn-sm">Ver más</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card shadow-sm border-0">
-        <img src="https://cdn.pixabay.com/photo/2020/02/09/16/06/bmw-4829867_1280.jpg" 
-             class="card-img-top" alt="BMW S1000RR">
-        <div class="card-body">
-          <h5 class="fw-bold text-primary">BMW S1000RR</h5>
-          <p class="text-muted small">Cilindraje: 999cc | Potencia: 205HP | Peso: 197kg</p>
-          <a href="#" class="btn btn-outline-primary btn-sm">Ver más</a>
-        </div>
+      <div class="col-md-6">
+        <h2 class="fw-bold mb-3">Un proyecto hecho con pasión y tecnología</h2>
+        <p>
+          <strong>Motorized Love</strong> es un proyecto académico desarrollado por estudiantes del
+          <strong>SENA</strong> en el programa de <em>Técnico en Programación de Software</em>.  
+          Este sitio web busca integrar los conocimientos en desarrollo web, bases de datos y diseño
+          para ofrecer una experiencia interactiva sobre el mundo de las motocicletas.
+        </p>
+        <p>
+          Nuestro objetivo es compartir información precisa, curiosidades, y una visión más profunda del
+          legado que han dejado las grandes marcas del motociclismo a lo largo del tiempo.
+        </p>
       </div>
     </div>
   </div>
-</main>
+</section>
 
+<!-- SECCIÓN DE OBJETIVO -->
+<section class="py-5 text-center" style="background-color: #111; color: #ffe082;">
+  <div class="container">
+    <h2 class="fw-bold mb-3">Nuestra misión</h2>
+    <p class="mb-4">
+      Fomentar la cultura del motociclismo responsable, reconocer la innovación tecnológica y celebrar la pasión
+      por las dos ruedas.  
+      Este proyecto representa la dedicación, la creatividad y el espíritu de aprendizaje de futuros desarrolladores.
+    </p>
 
+  </div>
+</section>
 
+<!-- SECCIÓN DE EQUIPO -->
+<section class="py-5 bg-light text-dark">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-5">Conoce a Nuestro Equipo</h2>
+    <div class="row g-4 justify-content-center">
+
+      <!-- Integrante 1 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card border-0 shadow-lg rounded-4 p-3 h-100">
+          <img src="{{ url_for('static', filename='img/equipo/alejo.jpg') }}" class="rounded-circle mx-auto mb-3" width="150" height="150" alt="Foto integrante 1">
+          <h5 class="fw-bold mb-1">Alejandro Soler</h5>
+          <p class="mb-1">Edad: 17 años</p>
+          <p class="text-muted mb-3">Rol: Desarrollador Backend</p>
+          <div class="d-flex justify-content-center gap-3 fs-5">
+            <a href="https://instagram.com/aleejoo.00" target="_blank" class="text-dark"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.facebook.com/aleejoo.00" target="_blank" class="text-dark"><i class="bi bi-facebook"></i></a>
+            <a href="https://tiktok.com/@aleejoo.o" target="_blank" class="text-dark"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Integrante 2 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card border-0 shadow-lg rounded-4 p-3 h-100">
+          <img src="/static/assets/persona2.jpg" class="rounded-circle mx-auto mb-3" width="150" height="150" alt="Foto integrante 2">
+          <h5 class="fw-bold mb-1">Estefany Moreno</h5>
+          <p class="mb-1">Edad: 19 años</p>
+          <p class="text-muted mb-3">Rol: Diseñadora UI/UX</p>
+          <div class="d-flex justify-content-center gap-3 fs-5">
+            <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Integrante 3 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card border-0 shadow-lg rounded-4 p-3 h-100">
+          <img src="/static/assets/persona3.jpg" class="rounded-circle mx-auto mb-3" width="150" height="150" alt="Foto integrante 3">
+          <h5 class="fw-bold mb-1">Luis Peña</h5>
+          <p class="mb-1">Edad: 20 años</p>
+          <p class="text-muted mb-3">Rol: Desarrollador Frontend</p>
+          <div class="d-flex justify-content-center gap-3 fs-5">
+            <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Integrante 4 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card border-0 shadow-lg rounded-4 p-3 h-100">
+          <img src="/static/assets/persona4.jpg" class="rounded-circle mx-auto mb-3" width="150" height="150" alt="Foto integrante 4">
+          <h5 class="fw-bold mb-1">Sebastian Peña</h5>
+          <p class="mb-1">Edad: 19 años</p>
+          <p class="text-muted mb-3">Rol: Documentación y Testing</p>
+          <div class="d-flex justify-content-center gap-3 fs-5">
+            <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 {% include 'sitio/pie.html' %}
-
-    

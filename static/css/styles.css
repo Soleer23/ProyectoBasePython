@@ -11617,3 +11617,765 @@ h1 {
   transform: scale(1.05);
   cursor: pointer;
 }
+/* ----------- GENERAL ----------- */
+html, body {
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  background: #000; /* fondo base sin imagen */
+}
+
+/* ----------- LANDING ----------- */
+.landing {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  animation: fadeIn 1.2s ease;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* Imagen SOLO en esta sección */
+  background: url("/static/assets/motosgpt.png") no-repeat center center/cover;
+}
+
+.landing::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 0;
+}
+
+.landing * {
+  position: relative;
+  z-index: 1;
+}
+
+.landing .icon {
+  font-size: 3rem;
+  color: #ffe082;
+  margin-bottom: 15px;
+}
+
+.landing h1 {
+  font-weight: 700;
+  color: #ffe082;
+  letter-spacing: 2px;
+  font-size: 2.5rem;
+}
+
+.landing p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+.divider {
+  width: 80px;
+  height: 3px;
+  background: #ffe082;
+  margin: 20px auto;
+  border-radius: 5px;
+}
+
+.btn-landing {
+  background: transparent;
+  color: #ffe082;
+  border: 2px solid #ffe082;
+  padding: 10px 30px;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-landing:hover {
+  background: #ffe082;
+  color: #111;
+  box-shadow: 0 0 20px rgba(255, 224, 130, 0.7);
+}
+
+/* ----------- LOGIN CARD ----------- */
+.login-card {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: 350px;
+}
+
+.login-card.active {
+  display: block;
+}
+
+.btn-submit {
+  background-color: #ffe082;
+  border: none;
+  color: #111;
+  font-weight: 600;
+}
+
+.btn-submit:hover {
+  background-color: #ffca28;
+  color: #000;
+}
+
+/* ----------- ANIMACIONES ----------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ---------- CABECERA MODERNA DEL PANEL ---------- */
+
+.modern-header {
+  background: linear-gradient(135deg, #101010, );
+  border-bottom: 2px solid #ffe082;
+  box-shadow: 0 2px 10px rgba(255, 204, 0, 0.2);
+  border-radius: 8px;
+}
+
+.admin-info-box {
+  padding: 15px 20px;
+}
+
+.admin-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fefefe;
+  margin-bottom: 0;
+}
+
+.admin-title .highlight {
+  color: #ffe082;
+}
+
+.admin-subtitle {
+  color: #fefefe;
+  font-size: 0.95rem;
+  margin-top: 5px;
+}
+
+.breadcrumb-container .breadcrumb {
+  background: transparent;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.breadcrumb-item a {
+  color: #fefefe;
+  font-weight: 500;
+}
+
+.breadcrumb-item.active {
+  color: #ffe082;
+}
+
+.btn-logout {
+  background: #ffcc00;
+  color: #fefefe;
+  border: none;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+  background: #fefefe;
+  color: #ffe082;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
+}
+
+/* ---------- ESTILO GENERAL DEL PANEL ---------- */
+body {
+  background-color: #0d0d0d;
+  color: #ffffff;
+}
+
+/* ---------- NAVBAR SUPERIOR ---------- */
+.app-header.navbar {
+  background-color: #000000 !important;
+  border-bottom: 2px solid #ffe082;
+  box-shadow: 0 2px 10px rgba(255, 224, 130, 0.25);
+}
+
+.app-header .nav-link {
+  color: #ffffff !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.app-header .nav-link:hover {
+  color: #ffe082 !important;
+}
+
+.app-header .navbar-nav .dropdown-menu {
+  background-color: #1a1a1a;
+  border: 1px solid #ffe082;
+}
+
+.app-header .dropdown-item {
+  color: #fff;
+}
+
+.app-header .dropdown-item:hover {
+  background-color: #ffe082;
+  color: #000;
+}
+
+/* ---------- SIDEBAR IZQUIERDO ---------- */
+.app-sidebar {
+  background-color: #000000 !important;
+  color: #ffffff;
+  border-right: 2px solid #ffe082;
+}
+
+/* Marca lateral (logo + texto) */
+.sidebar-brand {
+  background-color: #111111;
+  border-bottom: 1px solid #ffe082;
+}
+
+.brand-link {
+  color: #ffe082 !important;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.brand-link:hover {
+  background-color: #1a1a1a;
+  color: #ffffff !important;
+}
+
+/* Elementos del menú */
+.sidebar-menu .nav-link {
+  color: #ffffff !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.sidebar-menu .nav-link i {
+  color: #ffe082;
+  margin-right: 6px;
+}
+
+.sidebar-menu .nav-link:hover,
+.sidebar-menu .nav-link.active {
+  background-color: #ffe082 !important;
+  color: #000000 !important;
+  font-weight: 600;
+}
+
+.sidebar-menu .nav-link:hover i,
+.sidebar-menu .nav-link.active i {
+  color: #000000 !important;
+}
+
+/* Submenús */
+.nav-treeview {
+  background-color: #111111;
+}
+
+.nav-treeview .nav-link {
+  padding-left: 35px;
+  font-size: 0.9rem;
+}
+
+/* ---------- SCROLLBAR DEL SIDEBAR ---------- */
+.sidebar-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-wrapper::-webkit-scrollbar-thumb {
+  background-color: #ffe082;
+  border-radius: 10px;
+}
+
+/* ---------- ICONOS DE SECCIÓN ---------- */
+.nav-icon {
+  font-size: 1.1rem;
+}
+
+/* ---------- BOTÓN DE COLAPSO DEL SIDEBAR ---------- */
+.bi-list {
+  color: #ffe082;
+}
+
+/* ---------- TOOLTIP O HOVER GENERAL ---------- */
+.nav-link[title]:hover::after {
+  background: #ffe082;
+  color: #000;
+  font-weight: 600;
+}
+
+/* ---------- FOOTER (SI EXISTE) ---------- */
+footer, .main-footer {
+  background: #000;
+  color: #fff;
+  border-top: 2px solid #ffe082;
+}
+/* ======= BLOQUE: ACCESOS DIRECTOS ======= */
+.accesos-directos-card {
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+  border: 2px solid #ffe082;
+  border-radius: 14px;
+  box-shadow: 0 0 12px rgba(255, 224, 130, 0.2);
+  transition: all 0.3s ease;
+}
+
+.accesos-directos-card:hover {
+  box-shadow: 0 0 18px rgba(255, 224, 130, 0.4);
+  transform: translateY(-4px);
+}
+
+/* ======= BLOQUES DE DASHBOARD ======= */
+.dashboard-card {
+  background: #000000;
+  border: 2px solid #1a1a1a;
+  border-radius: 16px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 224, 130, 0.15);
+}
+
+.dashboard-card:hover {
+  border-color: #ffe082;
+  box-shadow: 0 0 20px rgba(255, 224, 130, 0.4);
+  transform: translateY(-5px);
+}
+
+.dashboard-card i {
+  text-shadow: 0 0 10px rgba(255, 224, 130, 0.4);
+}
+
+.dashboard-card h5 {
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.dashboard-card .btn {
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px rgba(255, 224, 130, 0.3);
+}
+
+.dashboard-card .btn:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 14px rgba(255, 224, 130, 0.7);
+}
+
+/* ======= TEXTO ======= */
+.text-light {
+  color: #ccc !important;
+}
+/* ======= Corrige fondo blanco de las tarjetas ======= */
+.dashboard-card {
+  background: #0d0d0d !important; /* Fondo oscuro elegante */
+  border: 2px solid #1a1a1a !important;
+  border-radius: 16px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 224, 130, 0.15);
+  color: #fff; /* asegura texto blanco */
+}
+
+/* Efecto hover dorado */
+.dashboard-card:hover {
+  border-color: #ffe082 !important;
+  box-shadow: 0 0 20px rgba(255, 224, 130, 0.4);
+  transform: translateY(-5px);
+}
+
+/* Íconos dorados con brillo */
+.dashboard-card i {
+  color: #ffe082 !important;
+  text-shadow: 0 0 10px rgba(255, 224, 130, 0.4);
+}
+
+/* Título y texto */
+.dashboard-card h5 {
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.dashboard-card .card-text {
+  color: #ddd !important;
+}
+
+/* Botón dorado */
+.dashboard-card .btn {
+  border-radius: 10px;
+  background-color: #ffe082 !important;
+  color: #000 !important;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px rgba(255, 224, 130, 0.3);
+}
+
+.dashboard-card .btn:hover {
+  background: #fff !important;
+  color: #000 !important;
+  box-shadow: 0 0 14px rgba(255, 224, 130, 0.7);
+}
+/* ====== FOOTER ESTILIZADO ====== */
+.app-footer {
+  background: #0d0d0d; /* Fondo negro elegante */
+  border-top: 2px solid #ffe082; /* Línea dorada superior */
+  color: #fff; /* Texto blanco */
+  font-size: 0.95rem;
+  box-shadow: 0 -3px 8px rgba(255, 224, 130, 0.1);
+  z-index: 100;
+  position: relative;
+}
+
+/* Links del footer */
+.app-footer .footer-link {
+  color: #ffe082;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.app-footer .footer-link:hover {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 224, 130, 0.6);
+}
+
+/* Texto derecho */
+.app-footer .footer-right {
+  color: #ffe082;
+  font-weight: 500;
+}
+
+/* Adaptable */
+@media (max-width: 576px) {
+  .app-footer {
+    text-align: center;
+  }
+  .footer-left, .footer-right {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}
+/* ===================== */
+/* FOOTER PERSONALIZADO */
+/* ===================== */
+.app-footer {
+  background-color: #000 !important; /* fondo negro absoluto */
+  border-top: 2px solid #ffe082 !important; /* línea dorada */
+  color: #fff !important;
+  font-size: 0.95rem;
+  box-shadow: 0 -3px 8px rgba(255, 224, 130, 0.15);
+  position: relative;
+  z-index: 100;
+  padding: 12px 25px;
+}
+
+/* Texto principal */
+.app-footer strong {
+  color: #ffe082 !important;
+}
+
+/* Enlaces */
+.app-footer .footer-link {
+  color: #ffe082 !important;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.app-footer .footer-link:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255, 224, 130, 0.7);
+}
+
+/* Lado derecho */
+.app-footer .footer-right {
+  color: #ffe082 !important;
+  font-weight: 500;
+}
+
+/* Responsivo */
+@media (max-width: 576px) {
+  .app-footer {
+    text-align: center;
+    flex-direction: column;
+  }
+  .footer-left, .footer-right {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}
+/* ======================= */
+/*    MENÚ DE USUARIO      */
+/* ======================= */
+.user-dropdown {
+  background: #111 !important;
+  border: 1px solid #ffe082;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 0;
+  min-width: 280px;
+}
+
+.user-header {
+  position: relative;
+  background: linear-gradient(135deg, #000, #222);
+  border-bottom: 1px solid rgba(255, 224, 130, 0.4);
+  padding: 20px 15px 15px;
+}
+
+.user-header-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 224, 130, 0.1), transparent);
+  z-index: 0;
+}
+
+.user-avatar {
+  width: 80px;
+  height: 80px;
+  border: 2px solid #ffe082;
+  object-fit: cover;
+  z-index: 1;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 224, 130, 0.7);
+}
+
+.text-gold {
+  color: #ffe082 !important;
+}
+
+.small-text {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+/* Botones del menú */
+.user-footer .btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.user-footer .btn-outline-light:hover {
+  background-color: #ffe082;
+  color: #000;
+  border-color: #ffe082;
+}
+
+.user-footer .btn-warning {
+  background-color: #ffe082 !important;
+  border: none;
+}
+
+.user-footer .btn-warning:hover {
+  background-color: #ffecb3 !important;
+  color: #000 !important;
+}
+
+/* Hover en el menú */
+.user-dropdown li:hover {
+  background-color: rgba(255, 224, 130, 0.05);
+}
+
+/* Icono del navbar */
+.user-icon {
+  width: 35px;
+  height: 35px;
+  border: 2px solid #ffe082;
+  transition: all 0.3s ease;
+}
+
+.user-icon:hover {
+  box-shadow: 0 0 8px rgba(255, 224, 130, 0.7);
+}
+@keyframes goldGlow {
+  0% { box-shadow: 0 0 6px rgba(255, 224, 130, 0.3); }
+  50% { box-shadow: 0 0 14px rgba(255, 224, 130, 0.8); }
+  100% { box-shadow: 0 0 6px rgba(255, 224, 130, 0.3); }
+}
+
+.user-dropdown {
+  animation: goldGlow 4s infinite ease-in-out;
+}
+/* 🧾 Tabla personalizada estilo oscuro forzado */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2b2b2b !important;
+  color: white !important;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Encabezado */
+.custom-table thead {
+  background-color: #3a3a3a !important;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #fff !important;
+}
+
+/* Celdas y filas del cuerpo */
+.custom-table tbody tr,
+.custom-table tbody td {
+  background-color: #2b2b2b !important;
+  color: white !important;
+  border-top: 1px solid #4a4a4a !important;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #3f3f3f !important;
+}
+
+/* Bordes entre columnas */
+.custom-table th,
+.custom-table td {
+  border-right: 2px solid #ffe082 !important;
+  padding: 12px 14px;
+}
+
+.custom-table th:last-child,
+.custom-table td:last-child {
+  border-right: none !important;
+}
+
+/* Botón eliminar */
+.btn-danger {
+  background-color: #d9534f !important;
+  border: none !important;
+  color: white !important;
+  padding: 6px 12px !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #c9302c !important;
+  transform: scale(1.05);
+}
+
+/* 🧍 Encabezado de tarjeta */
+.card-header.bg-secondary {
+  background-color: #3a3a3a !important;
+  color: white !important;
+  font-weight: bold;
+  border-bottom: 2px solid #ffe082 !important;
+}
+
+/* Elimina el espacio lateral innecesario */
+.content-wrapper, 
+.main-content, 
+.app-main {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* Asegura que el sidebar empuje el contenido correctamente */
+.layout-fixed .wrapper .content-wrapper {
+  margin-left: 250px; /* ancho de tu sidebar */
+}
+
+/* Corrige comportamiento responsivo */
+@media (max-width: 991px) {
+  .layout-fixed .wrapper .content-wrapper {
+    margin-left: 0 !important;
+  }
+}
+/* 🔹 Hacer que el contenido principal sea desplazable */
+.app-main,
+.app-content {
+  height: 100vh;               /* ocupa toda la altura visible */
+  overflow-y: auto;            /* permite desplazamiento vertical */
+  overflow-x: hidden;          /* evita scroll horizontal */
+  scroll-behavior: smooth;     /* desplazamiento suave */
+}
+
+/* 🔧 Permitir que toda la página tenga scroll, no solo el contenedor */
+html, body {
+  height: auto !important;
+  overflow-y: auto !important;
+}
+
+/* Quitar el scroll interno del contenido principal de AdminLTE */
+.content-wrapper, .app-main, .layout-fixed .content-wrapper {
+  height: auto !important;
+  overflow: visible !important;
+}
+/* ----------- BOTÓN SUPERIOR ----------- */
+.btn-public {
+  position: fixed;
+  top: 20px;
+  right: 25px;
+  background: transparent;
+  color: #ffe082;
+  border: 2px solid #ffe082;
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.btn-public:hover {
+  background: #ffe082;
+  color: #111;
+  box-shadow: 0 0 15px rgba(255, 224, 130, 0.6);
+}
+.card:hover {
+  transform: translateY(-8px);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  object-fit: cover;
+  border: 3px solid #ffe082;
+}
+
+.bi {
+  transition: color 0.3s ease;
+}
+
+.bi:hover {
+  color: #ffe082;
+}
+.text-warning {
+  color: #ffd54f !important;
+}
+
+.bg-dark {
+  background: linear-gradient(180deg, #0b0b0b, #1c1c1c);
+}
+
+img.rounded-4 {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+img.rounded-4:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 213, 79, 0.4);
+}
