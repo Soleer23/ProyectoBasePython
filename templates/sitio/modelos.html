@@ -1,17 +1,224 @@
 {% include 'sitio/cabecera.html' %}
+
+
 <section class="hero">
-  <div class="hero-container">
-    <div class="hero-text">
-      <h1>Conocimiento, historia y pasión por las motocicletas</h1>
-      <p>
-        Explora la evolución, tecnología y diseño que han marcado el camino 
-        de las motocicletas icónicas. Sin ventas, solo amor por la velocidad.
-      </p>
+    <div class="hero-container">
+
+        <div class="hero-text">
+            <h1>Conocimiento, historia y pasión por las motocicletas</h1>
+            <p>
+                Explora la evolución, tecnología y diseño que han marcado el camino
+                de las motocicletas icónicas. Sin ventas, solo amor por la velocidad.
+            </p>
+        </div>
+
+        <div class="hero-logo">
+            <img src="{{ url_for('static', filename='img/frun.png') }}" alt="Motorized Love">
+        </div>
 
     </div>
-    <div class="hero-logo">
-      <img src="{{ url_for('static', filename='img/frun.png') }}" alt="Motorized Love">
-    </div>
-  </div>
 </section>
+
+<!-- SEPARADOR DORADO 1 -->
+<div class="separador-logo">
+    <img src="{{ url_for('static', filename='img/motoslogos-removebg-preview.png') }}" alt="logo">
+</div>
+
+
+<!-- SECCIÓN INVITACIÓN -->
+<section class="invitacion-modelos">
+    <div class="invitacion-box">
+        <h2>Modelos Icónicos que Marcaron la Historia</h2>
+        <p>
+            Descubre las motocicletas que revolucionaron el mundo sobre dos ruedas.
+            Diseños legendarios, motores inolvidables y tecnologías que cambiaron
+            para siempre la historia del motociclismo.
+        </p>
+        <a href="#modelos-lista" class="btn-explorar">Explorar Modelos</a>
+    </div>
+</section>
+
+<!-- SEPARADOR DORADO 2 -->
+<div class="separador-logo">
+    <img src="{{ url_for('static', filename='img/motoslogos-removebg-preview.png') }}" alt="logo">
+</div>
+
+
+<section class="modelos-container" id="modelos-lista">
+
+    <!-- YAMAHA -->
+    <div class="modelo-card">
+        <img class="logo-marca" src="{{ url_for('static', filename='img/logoYAMAHA-removebg-preview.png') }}" alt="Yamaha">
+        <div class="modelo-info">
+            <img class="moto-img" src="{{ url_for('static', filename='img/motos/yamahaYZFR11998.png') }}">
+            <h2 class="modelo-titulo">Yamaha YZF-R1 (1998)</h2>
+            <p class="modelo-desc">
+                La primera R1 revolucionó el mundo deportivo al ofrecer una relación peso-potencia nunca vista, 
+                un chasis altamente compacto y una estética que marcó la identidad de Yamaha por décadas. 
+                Su impacto transformó las superbikes modernas.
+            </p>
+            <ul class="ficha-tecnica">
+                <li><strong>Motor:</strong> 998 cc</li>
+                <li><strong>Potencia:</strong> 150 hp</li>
+                <li><strong>Peso:</strong> 177 kg</li>
+                <li><strong>Año:</strong> 1998</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- HONDA -->
+    <div class="modelo-card">
+        <img class="logo-marca" src="{{ url_for('static', filename='img/honda.png') }}" alt="Honda">
+        <div class="modelo-info">
+            <img class="moto-img" src="{{ url_for('static', filename='img/motos/hondacb750.png') }}">
+            <h2 class="modelo-titulo">Honda CB750 (1969)</h2>
+            <p class="modelo-desc">
+                Conocida como “la primera superbike del mundo”, la CB750 cambió la industria con su motor 
+                tetracilíndrico, arranque eléctrico y freno de disco. Fue un antes y un después en la moto moderna.
+            </p>
+            <ul class="ficha-tecnica">
+                <li><strong>Motor:</strong> 736 cc</li>
+                <li><strong>Potencia:</strong> 68 hp</li>
+                <li><strong>Peso:</strong> 218 kg</li>
+                <li><strong>Año:</strong> 1969</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- KAWASAKI -->
+    <div class="modelo-card">
+        <img class="logo-marca" src="{{ url_for('static', filename='img/kawasaki.png') }}" alt="Kawasaki">
+        <div class="modelo-info">
+            <img class="moto-img" src="{{ url_for('static', filename='img/motos/kawasakiz1.png') }}">
+            <h2 class="modelo-titulo">Kawasaki Z1 (1972)</h2>
+            <p class="modelo-desc">
+                La legendaria Z1 superó a todas sus rivales, destacándose por su impresionante potencia 
+                y fiabilidad. Se convirtió en un ícono del motociclismo clásico.
+            </p>
+            <ul class="ficha-tecnica">
+                <li><strong>Motor:</strong> 903 cc</li>
+                <li><strong>Potencia:</strong> 82 hp</li>
+                <li><strong>Peso:</strong> 230 kg</li>
+                <li><strong>Año:</strong> 1972</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SUZUKI -->
+    <div class="modelo-card">
+        <img class="logo-marca" src="{{ url_for('static', filename='img/suzuki.png') }}" alt="Suzuki">
+        <div class="modelo-info">
+            <img class="moto-img" src="{{ url_for('static', filename='img/motos/suzukigsxr750.png') }}">
+            <h2 class="modelo-titulo">Suzuki GSX-R750 (1985)</h2>
+            <p class="modelo-desc">
+                La primera GSX-R definió la categoría “race-replica”. Ligera, rápida y agresiva, cambió 
+                para siempre las motos deportivas.
+            </p>
+            <ul class="ficha-tecnica">
+                <li><strong>Motor:</strong> 750 cc</li>
+                <li><strong>Potencia:</strong> 100 hp</li>
+                <li><strong>Peso:</strong> 176 kg</li>
+                <li><strong>Año:</strong> 1985</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- HARLEY-DAVIDSON -->
+    <div class="modelo-card">
+        <img class="logo-marca" src="{{ url_for('static', filename='img/harley.png') }}" alt="Harley-Davidson">
+        <div class="modelo-info">
+            <img class="moto-img" src="{{ url_for('static', filename='img/motos/harleysportster.png') }}">
+            <h2 class="modelo-titulo">Harley-Davidson Sportster (1957)</h2>
+            <p class="modelo-desc">
+                Un ícono del estilo americano. La Sportster se mantuvo por más de 60 años como una de las 
+                líneas más queridas, símbolo de libertad y personalización.
+            </p>
+            <ul class="ficha-tecnica">
+                <li><strong>Motor:</strong> 883–1200 cc</li>
+                <li><strong>Potencia:</strong> 53–70 hp</li>
+                <li><strong>Peso:</strong> 225 kg</li>
+                <li><strong>Año:</strong> 1957</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- BMW -->
+    <div class="modelo-card">
+        <img class="logo-marca" src="{{ url_for('static', filename='img/bmw.png') }}" alt="BMW">
+        <div class="modelo-info">
+            <img class="moto-img" src="{{ url_for('static', filename='img/motos/bmwr32.png') }}">
+            <h2 class="modelo-titulo">BMW R32 (1923)</h2>
+            <p class="modelo-desc">
+                La primera motocicleta BMW y un hito en ingeniería. Presentó el icónico motor bóxer y un 
+                diseño robusto que influyó en décadas de motos alemanas.
+            </p>
+            <ul class="ficha-tecnica">
+                <li><strong>Motor:</strong> 486 cc bóxer</li>
+                <li><strong>Potencia:</strong> 8.5 hp</li>
+                <li><strong>Peso:</strong> 122 kg</li>
+                <li><strong>Año:</strong> 1923</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- DUCATI -->
+    <div class="modelo-card">
+        <img class="logo-marca" src="{{ url_for('static', filename='img/ducati.png') }}" alt="Ducati">
+        <div class="modelo-info">
+            <img class="moto-img" src="{{ url_for('static', filename='img/motos/ducati916.png') }}">
+            <h2 class="modelo-titulo">Ducati 916 (1994)</h2>
+            <p class="modelo-desc">
+                Considerada una de las motos más hermosas jamás creadas. La 916 dominó las pistas y 
+                marcó la estética Ducati.
+            </p>
+            <ul class="ficha-tecnica">
+                <li><strong>Motor:</strong> 916 cc bicilíndrico</li>
+                <li><strong>Potencia:</strong> 114 hp</li>
+                <li><strong>Peso:</strong> 195 kg</li>
+                <li><strong>Año:</strong> 1994</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- KTM -->
+    <div class="modelo-card">
+        <img class="logo-marca" src="{{ url_for('static', filename='img/ktm.png') }}" alt="KTM">
+        <div class="modelo-info">
+            <img class="moto-img" src="{{ url_for('static', filename='img/motos/ktm620duke.png') }}">
+            <h2 class="modelo-titulo">KTM 620 Duke (1994)</h2>
+            <p class="modelo-desc">
+                La moto que dio inicio a la familia Duke. Ligera, agresiva y con un carácter único que 
+                definió el estilo KTM.
+            </p>
+            <ul class="ficha-tecnica">
+                <li><strong>Motor:</strong> 609 cc monocilíndrico</li>
+                <li><strong>Potencia:</strong> 50 hp</li>
+                <li><strong>Peso:</strong> 145 kg</li>
+                <li><strong>Año:</strong> 1994</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TRIUMPH -->
+    <div class="modelo-card">
+        <img class="logo-marca" src="{{ url_for('static', filename='img/triumph.png') }}" alt="Triumph">
+        <div class="modelo-info">
+            <img class="moto-img" src="{{ url_for('static', filename='img/motos/triumphbonnevillet120.png') }}">
+            <h2 class="modelo-titulo">Triumph Bonneville T120 (1959)</h2>
+            <p class="modelo-desc">
+                Símbolo del motociclismo británico. La Bonneville representó estilo, velocidad y libertad 
+                durante generaciones.
+            </p>
+            <ul class="ficha-tecnica">
+                <li><strong>Motor:</strong> 649 cc</li>
+                <li><strong>Potencia:</strong> 46 hp</li>
+                <li><strong>Peso:</strong> 178 kg</li>
+                <li><strong>Año:</strong> 1959</li>
+            </ul>
+        </div>
+    </div>
+
+</section>
+
+
 {% include 'sitio/pie.html' %}
